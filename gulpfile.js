@@ -2,6 +2,15 @@ const elixir = require('laravel-elixir');
 
 require('laravel-elixir-vue-2');
 
+var gulp = require('gulp'),
+    php = require('gulp-connect-php');
+
+gulp.task('serve', function() {
+    php.server({
+        base: './public'
+    });
+});
+
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -15,5 +24,9 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
     mix.sass('app.scss')
-       .webpack('app.js');
+       .webpack('app.js')
+       .task('serve')
+       .browserSync({
+       		proxy: 'localhost:8000'
+       });
 });
