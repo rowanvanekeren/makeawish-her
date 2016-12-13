@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class PusherController extends Controller
 {
-    //
+    public function pushWish(){
+        
+    }
 }
