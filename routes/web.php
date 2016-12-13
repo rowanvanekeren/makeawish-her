@@ -17,3 +17,4 @@ Route::get('/bridge', 'HomeController@bridge');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/wish', 'WishController@getBlowAWishPage');
