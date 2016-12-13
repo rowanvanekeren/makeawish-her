@@ -61,7 +61,8 @@ function create() {
 
     for(var a=0; i<amountOfFlakes; i++){
     var randomX = Math.floor(Math.random() * 800);
-     var flake = game.add.sprite(randomX, 500, 'snowflakes_large');
+        var randomSprite = Math.floor(Math.random() * 5);
+     var flake = game.add.sprite(randomX, 200, 'snowflakes_large',randomSprite);
         flakes.add(flake);
         array.push(flake);
         game.physics.arcade.enable(flake);
@@ -138,8 +139,6 @@ function setXSpeed(emitter, max) {
 function setParticleXSpeed(particle, max) {
 
         particle.body.velocity.x = max - Math.floor(Math.random() * 20);
-
-
 
 }
 /**

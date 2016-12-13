@@ -35,12 +35,25 @@ return [
     |
     */
 
-    'connections' => [
+   /* 'connections' => [
 
         'main' => [
             'auth_key' => '384bb2566e2643e8be0e',
             'secret' => '556123d722598505f0dd',
             'app_id' => '277118',
+            'options' => [
+                'cluster' => 'eu'
+            ],
+            'host' => null,
+            'port' => null,
+            'timeout' => null,
+        ],*/
+    'connections' => [
+
+        'main' => [
+            'auth_key' => '7d5f75a6e8d507102cdb',
+            'secret' => '680b97afa854d0a9fbb9',
+            'app_id' => '275644',
             'options' => [
                 'cluster' => 'eu'
             ],
