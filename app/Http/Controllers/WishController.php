@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -13,8 +12,12 @@ class WishController extends Controller
         return view('overview', ['wishes' => $wishes]);
     }
 
+    public function getBlowAWishPage(){
+        return view('wish');
+    }
     public function saveWish(Request $request){
-        $wish = new Wish(
+
+       $wish = new Wish(
             [
                 'name' => $request->name,
                 'wish' => $request->wish
@@ -22,5 +25,7 @@ class WishController extends Controller
         );
 
         $wish->save();
+
+        return('wish');
     }
 }
