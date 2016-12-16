@@ -8,5 +8,8 @@
         <input id="submit" type="submit" name="submit" value="Doe een wens">
     </form>
 
-</div>
+    <form action="./pusher" method="post">
+        {{ csrf_field() }}
+        <input type="submit">
+    </form>
 @endsection

@@ -17,6 +17,8 @@ Route::get('/bridge', 'HomeController@bridge');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/overview', 'wishController@getWishes');
 Route::get('/wish', 'wishController@getBlowAWishPage');
 
 Route::post('/save_wish', 'wishController@saveWish');
+Route::post('/pusher', 'PusherController@pushWish');

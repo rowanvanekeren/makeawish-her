@@ -8,7 +8,7 @@ use App\Wish;
 class WishController extends Controller
 {
     public function getWishes(){
-        $wishes = Wish::paginate(9);
+        $wishes = Wish::paginate(3);
         return view('overview', ['wishes' => $wishes]);
     }
 

@@ -14,6 +14,7 @@ var blowawish = angular.module("blowawish",[]).controller("wishAngController", f
         };
 
         $http(req).then(function(data){
+
             console.log(data);
         }
 
