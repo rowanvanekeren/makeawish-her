@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Wish;
 class HomeController extends Controller
 {
     /**
@@ -23,7 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $lastWishes = Wish::orderBy('created_at','DESC')->take(3)->get();
+
+        return view('index', ['wishes' => $lastWishes]);
     }
 
     public function bridge() {
