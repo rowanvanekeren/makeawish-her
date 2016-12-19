@@ -8,6 +8,8 @@
     "bootstrap-sass": "^3.3.7",
     "gulp": "^3.9.1",
     "gulp-connect-php": "0.0.8",
+    "gulp-image": "^2.7.2",
+    "gulp-imagemin": "^3.1.1",
     "gulp-serve": "^1.4.0",
     "gulp-webserver": "^0.9.1",
     "jquery": "^3.1.0",
