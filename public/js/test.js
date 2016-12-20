@@ -1,10 +1,10 @@
 //  This example was created by Jens Anders Bakke
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create });
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',{ preload: preload, create: create },true);
 
 function preload() {
 
-    game.load.image('sky', 'assets/skies/sky3.png');
+    /*game.load.image('sky', 'assets/skies/sky3.png');*/
     game.load.spritesheet('snowflakes', 'assets/sprites/snowflakes.png', 17, 17);
     game.load.spritesheet('snowflakes_large', 'assets/sprites/snowflakes_large.png', 64, 64);
 
@@ -22,7 +22,7 @@ var array = [];
 function create() {
 
 /*    game.add.image(0, 0, 'sky');*/
-    game.transparent = true;
+   /* game.stage.backgroundColor = 'rgba(255, 255, 255, 0.5)';*/
     back_emitter = game.add.emitter(game.world.centerX, -32, 600);
     back_emitter.makeParticles('snowflakes', [0, 1, 2, 3, 4, 5]);
     back_emitter.maxParticleScale = 0.6;
@@ -61,26 +61,41 @@ function create() {
 
     for(var a=0; i<amountOfFlakes; i++){
     var randomX = Math.floor(Math.random() * 800);
+    var randomY = Math.floor(Math.random() * 600);
+
         var randomSprite = Math.floor(Math.random() * 5);
-     var flake = game.add.sprite(randomX, 200, 'snowflakes_large',randomSprite);
+     var flake = game.add.sprite(randomX, randomY, 'snowflakes_large',randomSprite);
         flakes.add(flake);
         array.push(flake);
         game.physics.arcade.enable(flake);
         flake.enableBody = true;
         flake.body.gravity.y = 0;
         flake.body.collideWorldBounds = true;
-
+        flakes.setAll('body.friction', 4000);
     }
-
+    var testint = 10;
+    var bool = true;
     setInterval(function(){
         flakes.forEach(function(flake){
-            if(globalAvarage < 40){
-               flake.body.gravity.y = 200 ;
-            }else{
-                flake.body.gravity.y = -globalAvarage * Math.random();
-                setTimeout(function(){
+            if(globalAvarage < 90){
 
-                },500);
+                if(bool){
+                testint = testint + testint;
+                    bool = false
+                }
+               flake.body.velocity.y = 0;
+           /*     flakes.setAll('body.mass', 99);
+                flakes.setAll('body.friction', 99);*/
+
+            }else{
+                bool=true;
+                /*flake.body.gravity.y = -globalAvarage * Math.random()*1000;*/
+                flake.body.velocity.y = -testint;
+                flake.body.mass = 0;
+                setTimeout(function(){
+                  /*  flakes.setAll('body.mass', 0);
+                    flakes.setAll('body.friction', 0);*/
+                },50);
 
             }
 

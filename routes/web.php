@@ -13,6 +13,7 @@
 
 Route::get('/', 'HomeController@index');
 Route::get('/bridge', 'HomeController@bridge');
+Route::get('/calibration', 'MicController@calibration');
 
 Auth::routes();
 
@@ -22,3 +23,6 @@ Route::get('/wish', 'wishController@getBlowAWishPage');
 
 Route::post('/save_wish', 'wishController@saveWish');
 Route::post('/pusher', 'PusherController@pushWish');
+Route::post('/savepreset', 'MicController@savePreset');
+Route::post('/deletepreset', 'MicController@deletePreset');
+Route::post('/choosepreset', 'MicController@choosePreset');
