@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container">
-	<div class="inner-container">
+	<div class="inner-container" id="particles-js">
 		@foreach($wishes as $wish)
 		<div class="card">
 			<div class="card_handle"></div>
