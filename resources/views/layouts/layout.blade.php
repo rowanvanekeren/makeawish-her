@@ -21,8 +21,7 @@
         ]); ?>
     </script>
 </head>
-<body>
-    <body ng-app="blowawish">
+<body ng-app="blowawish">
 	<nav>
 		<div class="inner-nav">
 			<ul>
