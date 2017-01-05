@@ -311,4 +311,144 @@ nav .inner-nav ul li a:hover:after {
   margin-top: 0;
 }
 
+.button-3d {
+  font-family: "Raleway", sans-serif;
+  color: white;
+  font-weight: bold;
+  display: -webkit-box;
+  display: flex;
+  width: 80px;
+  font-size: 0.8em;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 5px;
+  -webkit-transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
+  transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
+  background: #03A9F4;
+  border: solid 1px #1976D2;
+  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2, 3px 2px 0px #1976D2, 2px 3px 0px #1976D2, 4px 3px 0px #1976D2, 3px 4px 0px #1976D2, 5px 4px 0px #1976D2, 4px 5px 0px #1976D2, 6px 5px 0px #1976D2, 5px 6px 0px #1976D2;
+}
+
+.button-3d:active {
+  -webkit-transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
+  transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
+  margin-left: 9px;
+  margin-top: 9px;
+  box-shadow: 0px 0px 0px #1976D2;
+}
+
+.custom-style {
+  width: 100%;
+  overflow-y: auto;
+  font-family: "Raleway", sans-serif;
+}
+
+.preset-container {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.preset-container table {
+  width: auto;
+  margin: 0 auto;
+}
+
+.preset-container table tr {
+  position: relative;
+}
+
+.preset-container table td {
+  color: white;
+  position: relative;
+  width: 60px;
+  height: 30px;
+}
+
+.preset-container table td div {
+  position: absolute;
+}
+
+.preset-container table td .choose {
+  position: absolute;
+}
+
+.preset-container table td .delete {
+  position: absolute;
+  left: 30px;
+}
+
+.preset-container table .preset-name {
+  width: 180px !important;
+}
+
+.preset-new {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.preset-new ul {
+  width: 550px;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.preset-new ul li {
+  width: 180px;
+  height: 20px;
+  display: inline-block;
+}
+
+.preset-new ul div {
+  position: relative;
+}
+
+.preset-new ul div .button-3d {
+  width: 90px;
+  position: absolute;
+}
+
+.custom-box {
+  height: 20px;
+  padding: 5px;
+  border: 0 solid white;
+  border-bottom: 2px dotted #9a2e2b;
+  background-color: rgba(255, 169, 156, 0);
+  color: white;
+  font-family: "Raleway", sans-serif;
+}
+
+.custom-box:focus {
+  border-bottom: 2px dotted red;
+  /* box-shadow: 0 0px 0px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);*/
+  outline: 0 none;
+  box-shadow: none;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.preset-curr {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  width: 100%;
+  text-align: center;
+}
+
+.preset-calibrate {
+  width: 100%;
+}
+
+.preset-calibrate .button-3d {
+  width: 300px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.preset-calibrate h1 {
+  width: 100%;
+  text-align: center;
+}
+
 /*# sourceMappingURL=app.css.map */
