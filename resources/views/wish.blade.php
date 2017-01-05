@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-    <div class="blowdiv"></div>
+
 <div ng-controller="wishAngController">
 
     <form ng-submit="submitWish()">
@@ -15,5 +15,6 @@
         <input type="submit">
     </form>
     </div>
+<div class="blowdiv"></div>
     <div  ng-controller="micStreamAngController" ng-init="initWish()"></div>
 @endsection

@@ -40,7 +40,7 @@
 
 		@yield('content')
     
-    </div>
+
 
     <!-- Scripts -->
     <script src="{{url('/js/jquery-3.1.1.min.js')}}"></script>
@@ -48,9 +48,7 @@
 	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 	<script src="{{url('/js/wish_angular.js')}}"></script>
-	<script src="{{url('/js/phaser.min.js')}}"></script>
-	{{--<script src="{{url('/js/test2.js')}}"></script>--}}
-	{{--<script src="{{url('/js/test4.js')}}"></script>--}}
+
 		@yield('scripts')
     <script src="/js/app.js"></script>
 </body>
