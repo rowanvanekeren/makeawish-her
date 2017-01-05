@@ -10,7 +10,7 @@
     }
 
     </style>
-    <div class="landerditmoetjijverwijderen" ng-controller="micStreamAngController" ng-init="initMic()">
+    <div class="landerditmoetjijverwijderen" ng-controller="micStreamAngController" ng-init="initCalibrate()">
        <div>
            @if(isset($currCookie[1]))
            <h1 >  {{ $currCookie[1] }}</h1>

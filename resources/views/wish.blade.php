@@ -15,5 +15,5 @@
         <input type="submit">
     </form>
     </div>
-    <div  ng-controller="micStreamAngController" ng-init="initMic()"></div>
+    <div  ng-controller="micStreamAngController" ng-init="initWish()"></div>
 @endsection
