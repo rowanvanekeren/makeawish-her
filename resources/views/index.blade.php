@@ -5,21 +5,20 @@
 		<div class="inner-container">
 			<div class="inner-container-left">Uitleg</div>
 			<div class="inner-container-right">
+				@foreach( $wishes as $wish )
+
 				<div class="wish">
-					<blockquote>
-						<p>Wish</p>
-					</blockquote>
+					<div class="quote-box">
+						<div class="quote-text">
+							<i class="fa fa-quote-left"></i><span id="text">{{ str_limit(ucfirst($wish->wish), 100) }}</span>
+						</div>
+						<div class="quote-author">
+							- <span id="author">{{ ucfirst($wish->name) }}</span>
+						</div>
+					</div>
 				</div>
-				<div class="wish">
-					<blockquote>
-						<p>Wish</p>
-					</blockquote>
-				</div>
-				<div class="wish">
-					<blockquote>
-						<p>Wish</p>
-					</blockquote>
-				</div>
+
+				@endforeach
 			</div>
 		</div>
 	</div>

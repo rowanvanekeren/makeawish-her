@@ -1,6 +1,4 @@
-@charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Roboto");
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+@import url("https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light");
 html, body {
   width: 100%;
   height: 100vh;
@@ -50,8 +48,8 @@ nav .inner-nav ul {
 }
 
 nav .inner-nav ul li a {
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 30px;
   text-decoration: none;
   color: #1a1a1a;
   letter-spacing: 0;
@@ -65,7 +63,7 @@ nav .inner-nav ul li a:after {
   left: 0;
   bottom: -2px;
   width: 0;
-  height: 2px;
+  height: 1px;
   background-color: #1a1a1a;
   content: "";
   -webkit-transition: width 0.2s;
@@ -85,6 +83,9 @@ nav .inner-nav ul li a:hover:after {
   justify-content: center;
   -webkit-box-align: center;
   align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+  flex-direction: column-reverse;
 }
 
 .container .inner-container {
@@ -94,20 +95,15 @@ nav .inner-nav ul li a:hover:after {
   box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2), 0px 40px 70px 0px rgba(0, 0, 0, 0.22);
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  flex-direction: row;
-  justify-content: space-around;
-  -webkit-box-align: center;
-  align-items: center;
+  flex-flow: row wrap;
+  -webkit-box-pack: center;
+  justify-content: center;
 }
 
-.container .inner-container .inner-container-left, .container .inner-container .inner-container-right .wish, .container .inner-container .inner-container-right {
-  width: 40%;
-  height: 80%;
-}
-
-.container .inner-container .inner-container-left, .container .inner-container .inner-container-right .wish {
+.container .inner-container .inner-container-left, .container .inner-container .inner-container-right {
+  -webkit-box-flex: 1;
+  flex: 1 0 30%;
+  margin: 3%;
   background-color: #FFF;
   box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2), 0px 40px 70px 0px rgba(0, 0, 0, 0.22);
   border-radius: 5px;
@@ -124,30 +120,144 @@ nav .inner-nav ul li a:hover:after {
 }
 
 .container .inner-container .inner-container-right .wish {
-  height: 30%;
+  -webkit-box-flex: 1;
+  flex: 1;
+  border-bottom: 1px #dadada solid;
+}
+
+.container .inner-container .inner-container-right .wish .quote-box {
+  box-sizing: border-box;
+  padding: 5%;
   width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
 }
 
-.container .inner-container .inner-container-right .wish blockquote {
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-  quotes: "“" "”";
+.container .inner-container .inner-container-right .wish .quote-box .quote-text {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
 }
 
-.container .inner-container .inner-container-right .wish blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 4em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+.container .inner-container .inner-container-right .wish .quote-box .quote-text i {
+  font-size: 1.0em;
+  margin-right: 0.4em;
 }
 
-.container .inner-container .inner-container-right .wish blockquote p {
-  display: inline;
-  font-family: "Roboto", sans-serif;
+.container .inner-container .inner-container-right .wish .quote-box .quote-author {
+  font-family: "Raleway", sans-serif;
+  font-style: italic;
+  padding-top: 20px;
+  font-size: 1em;
+  text-align: right;
+}
+
+.container .inner-container .card {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1 1 300px;
+  background-color: #FFF;
+  margin: 2%;
+  box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2), 0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+}
+
+.container .inner-container .card .card_text {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+
+.container .inner-container .card .card_text .quote-box {
+  box-sizing: border-box;
+  padding: 5%;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-flex: 1;
+  flex: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.container .inner-container .card .card_text .quote-box .quote-text {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+}
+
+.container .inner-container .card .card_text .quote-box .quote-text i {
+  font-size: 1.0em;
+  margin-right: 0.4em;
+}
+
+.container .inner-container .card .card_text .quote-box .quote-author {
+  font-family: "Raleway", sans-serif;
+  font-style: italic;
+  padding-top: 20px;
+  font-size: 1em;
+  text-align: right;
+}
+
+.container .pagination {
+  width: 100%;
+  background-color: #dadada;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.container .pagination ul {
+  width: 20%;
+  margin: 1%;
+  padding: 0;
+  display: -webkit-box;
+  display: flex;
+  justify-content: space-around;
+}
+
+.container .pagination ul li {
+  list-style-type: none;
+  width: 10%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+.container .pagination ul li:hover a {
   font-size: 24px;
-  color: #1a1a1a;
+  -webkit-transition: font-size 0.2s;
+  transition: font-size 0.2s;
+}
+
+.container .pagination ul li a {
+  position: absolute;
+  text-decoration: none;
+  color: black;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
+  -webkit-transition: font-size 0.2s;
+  transition: font-size 0.2s;
+}
+
+.container .pagination ul .active span, .container .pagination ul .disabled span {
+  text-decoration: none;
+  color: black;
+  font-family: "Raleway", sans-serif;
+  font-size: 18px;
 }
 
 .blowdiv{

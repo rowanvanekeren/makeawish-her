@@ -1,10 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light');
 
-$font-stack: 'Roboto', sans-serif;
+$shadow: 'Shadows Into Light', cursive;
+$raleway: 'Raleway', sans-serif;
 $primary-text-color: #1a1a1a;
 
 $theme-color-1: #dadada;
 $theme-color-2: #FFF;
+
+$break-large: 1240px;
+$break-small: 475px;
 
 html, body {
 	width: 100%;
@@ -46,18 +50,14 @@ nav {
 
 			li {
 				a {
-					font-family: $font-stack;
-					font-size: 24px;
+					font-family: $shadow;
+					font-size: 30px;
 					text-decoration: none;
 					color: $primary-text-color;
 					letter-spacing: 0;
 					
 					position: relative;
 					text-transform: uppercase;
-
-					&:active {
-						
-					}
 				
 					&:after {
 						display: block;
@@ -65,7 +65,7 @@ nav {
 					  	left: 0;
 					  	bottom: -2px;
 					  	width: 0;
-					  	height: 2px;
+					  	height: 1px;
 					  	background-color: $primary-text-color;
 					  	content: "";
 					  	transition: width 0.2s;
@@ -87,6 +87,7 @@ nav {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column-reverse;
 
 	.inner-container {
 		width: 100%;
@@ -95,16 +96,12 @@ nav {
 		box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
 
 		display: flex;
-		flex-direction: row;
-		justify-content: space-around;
-		align-items: center;
+		flex-flow: row wrap;
+		justify-content: center;
 
 		.inner-container-left, .inner-container-right {
-			width: 40%;
-			height: 80%;
-		}
-
-		.inner-container-left {
+			flex: 1 0 30%;
+			margin: 3%;
 			background-color: $theme-color-2;
 			box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
 			border-radius: 5px;
@@ -116,40 +113,131 @@ nav {
 			justify-content: space-between;
 
 			.wish {
-				@extend .inner-container-left;
-				height: 30%;
-				width: 100%;
-				
-				blockquote {
-  					margin: 1.5em 10px;
-  					padding: 0.5em 10px;
-  					quotes: "\201C""\201D";
+				flex: 1;	
+				border-bottom: 1px $theme-color-1 solid;
 
-  					&:before {
-  						color: #ccc;
-		  				content: open-quote;
-		  				font-size: 4em;
-		  				line-height: 0.1em;
-		  				margin-right: 0.25em;
-		  				vertical-align: -0.4em;
-  					}
+				.quote-box {
+					box-sizing: border-box;
 
-  					p {
-  						display: inline;
-  						font-family: $font-stack;
-						font-size: 24px;
-						color: $primary-text-color;
-  					}
+					padding: 5%;
+					width: 100%;
+					height: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+
+					.quote-text {
+						i {
+							font-size: 1.0em;
+							margin-right: 0.4em;
+						}
+						width: 100%;
+						font-family: $raleway;
+						font-size: 30px;
+					}
+					.quote-author {
+						font-family: $raleway;
+						font-style: italic;
+						padding-top:20px;
+						font-size:1em; 
+						text-align:right;
+					}
+				}					
+			}
+		}
+
+		.card {
+			display: flex;
+			flex: 1 1 300px;
+			background-color: $theme-color-2;
+			margin: 2%;
+			box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+			border-radius: 5px;
+
+			.card_handle {}
+
+			.card_text {
+				display: flex;
+				flex: 1;
+
+				.quote-box {
+					box-sizing: border-box;
+
+					padding: 5%;
+					width: 100%;
+					display: flex;
+					flex: 1;
+					flex-direction: column;
+					justify-content: space-between;
+
+					.quote-text {
+						i {
+							font-size: 1.0em;
+							margin-right: 0.4em;
+						}
+						width: 100%;
+						font-family: $raleway;
+						font-size: 30px;
+					}
+					.quote-author {
+						font-family: $raleway;
+						font-style: italic;
+						padding-top:20px;
+						font-size:1em; 
+						text-align:right;
+					}
 				}
+			}
+		}
+	}
+
+	.pagination {
+		width: 100%;
+		background-color: $theme-color-1;
+		display: flex;
+		justify-content: center;
+
+		ul {
+			width: 20%;
+			margin: 1%;
+			padding: 0;
+
+			display: flex;
+			justify-content: space-around;
+
+			li {
+				list-style-type: none;
+				width: 10%;
+
+				display: flex;
+				justify-content: center;
+
+				&:hover {
+					a {
+						font-size: 24px;
+						transition: font-size 0.2s;
+					}					
+				}
+
+				a {
+					position: absolute;
+					text-decoration: none;
+					color: black;
+					font-family: $raleway;
+					font-size: 18px;
+					transition: font-size 0.2s;
+				}
+			}
+
+			.active span, .disabled span {
+				text-decoration: none;
+				color: black;
+				font-family: $raleway;
+				font-size: 18px;
 			}
 		}
 	}
 }
 
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
 // Variables
 @import "variables";
-
-// Bootstrap

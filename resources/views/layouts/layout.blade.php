@@ -18,12 +18,12 @@
 					<img src="" alt="Logo Blow-A-Wish">
 				</li>
 				<li>
-					<a href="/wish">Wish</a>
+					<a href="/overview">Wish</a>
 				</li>
 			</ul>
 		</div>	
 	</nav>
-
+	
 	@yield('content')
 
 <script src="{{url('/js/jquery-3.1.1.min.js')}}"></script>
