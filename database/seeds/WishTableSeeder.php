@@ -38,13 +38,13 @@ class WishTableSeeder extends Seeder
                 'updated_at' => \Carbon\Carbon::now(),
                 ),
             array(
-                'name'=>'Eden Hazaad',
+                'name'=>'Eden Hazard',
                 'wish' => 'mijn grootste droom is om profvoetballer te worden',
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
                 ),
             array(
-                'name'=>'Uvuvuvavuvu Oesassusa Hoesas',
+                'name'=>'Oesassusa Hoesas',
                 'wish' => 'derp ferp merp serp lerp king rapper im master sjakko asdfsdf adsfasd sadf asdf  sadf sdfsadf sadf asdf asdf',
                 'created_at' => \Carbon\Carbon::now(),
                 'updated_at' => \Carbon\Carbon::now(),
