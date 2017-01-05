@@ -2,9 +2,9 @@
 
 $shadow: 'Shadows Into Light', cursive;
 $raleway: 'Raleway', sans-serif;
-$primary-text-color: #1a1a1a;
+$primary-text-color: white;
 
-$theme-color-1: #dadada;
+$theme-color-1: #292729;
 $theme-color-2: #FFF;
 
 $break-large: 1240px;
@@ -226,12 +226,14 @@ nav {
 					font-family: $raleway;
 					font-size: 18px;
 					transition: font-size 0.2s;
+
+					color: $primary-text-color;
 				}
 			}
 
 			.active span, .disabled span {
 				text-decoration: none;
-				color: black;
+				color: $primary-text-color;
 				font-family: $raleway;
 				font-size: 18px;
 			}

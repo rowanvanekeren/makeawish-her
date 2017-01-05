@@ -1,6 +1,5 @@
 const elixir = require('laravel-elixir');
 
-require('laravel-elixir-vue-2');
 
 var gulp = require('gulp'),
     php = require('gulp-connect-php'),
@@ -29,7 +28,7 @@ gulp.task('image', function () {
  |
  */
 
-elixir(mix => {
+elixir(function(mix) {
     mix.sass('app.scss')
        .webpack('app.js')
        .task('serve')
