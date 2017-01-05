@@ -11,7 +11,7 @@ particlesJS.load('particles-js', 'assets/particles.json', function() {
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+//require('./bootstrap');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -3,7 +3,11 @@
 @section('content')
 	<div class="container">
 		<div class="inner-container" id="particles-js">
-			<div class="inner-container-left">Uitleg</div>
+			<div class="inner-container-left">
+				<div class="explanation">
+					Volg ons doorheen het land met onze Blow-a-Wish-box!
+				</div>
+			</div>
 			<div class="inner-container-right">
 				@foreach( $wishes as $wish )
 
