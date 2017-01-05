@@ -5,7 +5,7 @@
     <div class="container" ng-controller="micStreamAngController" ng-init="initCalibrate()">
         <div class="inner-container">
             <div class="custom-style">
-                <a href="{{ url('/logout') }}"
+                <a class="logout" href="{{ url('/logout') }}"
                    onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
                     Logout
