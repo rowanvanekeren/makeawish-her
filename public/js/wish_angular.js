@@ -67,8 +67,12 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
                 } else {
                     if(!cookieIsSet && !streamOpen){
                         console.log('init cookie and stream failed');
+                        $scope.cookieError = true;
+
                     }else if(!cookieIsSet && streamOpen){
                         console.log('init cookie failed');
+                        $scope.cookieError = true;
+
 
                     }else if(!streamOpen && cookieIsSet){
                         console.log('opening stream failed');
@@ -133,6 +137,8 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
                 cookievalue = decodeURIComponent(item).split(/=|&/);
                 maxMicPeak = parseInt(cookievalue[2]);
                 cookieIsSet = true;
+                $scope.cookieError = false;
+        
                 console.log(cookievalue);
             }
         });

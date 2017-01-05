@@ -12,6 +12,14 @@
     </style>
     <div class="landerditmoetjijverwijderen" ng-controller="micStreamAngController" ng-init="initCalibrate()">
        <div>
+           <a href="{{ url('/logout') }}"
+              onclick="event.preventDefault();
+              document.getElementById('logout-form').submit();">
+               Logout
+           </a>
+           <form id="logout-form" action="{{ url('/logout') }}" method="POST">
+               {{ csrf_field() }}
+           </form>
            @if(isset($currCookie[1]))
            <h1 >  {{ $currCookie[1] }}</h1>
            @else
@@ -49,7 +57,7 @@
        </div>
        <form method="POST" action="./savepreset">
            {{ csrf_field() }}
-           <input type="text" id="preset_name" name="preset_name" required/>
+           <input type="text" id="preset_name" name="preset_name" placeholder="preset name" required/>
            <input type="number" id="preset_number" name="preset_number" required/>
            <input type="submit" name="submit"/>
        </form>

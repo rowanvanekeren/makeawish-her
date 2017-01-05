@@ -1,7 +1,10 @@
 @extends('layouts.layout')
 
 @section('content')
-
+<?php
+$general_errors = new \App\Http\Helpers\General_Errors();
+$preset_error = $general_errors->general_errors('cookiePreset');
+?>
 <div ng-controller="wishAngController">
 
     <form ng-submit="submitWish()">
@@ -14,7 +17,12 @@
         {{ csrf_field() }}
         <input type="submit">
     </form>
-    </div>
+</div>
 <div class="blowdiv"></div>
-    <div  ng-controller="micStreamAngController" ng-init="initWish()"></div>
+    <div  ng-controller="micStreamAngController" ng-init="initWish()">
+        <div ng-show="cookieError">
+            <div class="error">{{$preset_error}}</div>
+            <a href="./calibration">Choose preset</a>
+        </div>
+</div>
 @endsection
