@@ -9,20 +9,31 @@ class PusherController extends Controller
 {
 
     public function pushWish($name = "noname"){
-        var_dump("test");
+        $pinToPush =1; // 0 , 1 or 2 possible
+
         $pusherChannel = "blow_a_wish";
         $pusherEvent = "send_wish";
         $pusherName = $name ;
+        $state = 'timeout';
+        $milliseconds = 3000; //settimeout settings delay
+        $time = strtotime('now');
+
+
+        $data['pin'] = $pinToPush;
+        $data['state'] = $state; // can be on and off and timeout
+        $data['name'] = $pusherName;
+        $data['ms'] = $milliseconds;
+        $data['time'] = $time;
 
         $pusher = App::make('pusher');
 
         $pusher->trigger( $pusherChannel,
-            $pusherEvent,
-         "test"
+        $pusherEvent,
+        $data
         );
       /*  array('state' => 'on',
             'name' =>  $pusherName
         )*/
-        return view('wish');
+        return $pusherName;
     }
 }

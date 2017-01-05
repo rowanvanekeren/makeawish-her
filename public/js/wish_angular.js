@@ -23,8 +23,10 @@ var blowawish = angular.module("blowawish",[]).controller("wishAngController", f
 
 });
 
-blowawish.controller("micStreamAngController", function ($scope, $http) {
+blowawish.controller("micStreamAngController",  function ($scope, $http) {
+
 $scope.initMic = function() {
+
     var canCalibrate = false;
     var takeAverage = false;
     var avgArray = [];
@@ -63,19 +65,39 @@ $scope.initMic = function() {
     };
     $scope.initCookie= function(){
         var getCookies = document.cookie.split(';');
-
         getCookies.forEach(function(item, index, arr){
-
             if(item.indexOf(cookiename) !== -1){
                 cookievalue = decodeURIComponent(item).split(/=|&/);
                 maxMicPeak = parseInt(cookievalue[2]);
                 cookieIsSet = true;
+                console.log(cookievalue);
             }
-
-
         });
     };
+
     $scope.initCookie();
+
+    $scope.activatePusher = function(){
+        var req = {
+            method: 'POST',
+            url: './pusher',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                /* 'Content-Type': 'application/x-www-form-urlencoded'*/
+            },
+            data: {
+                name: $scope.wishFormName
+            }
+        };
+
+        $http(req).then(function(data){
+
+                console.log(data);
+            }
+
+        );
+
+    };
 
     console.log('loaded first');
     if (!navigator.getUserMedia) {
@@ -120,12 +142,15 @@ $scope.initMic = function() {
                 globalAverage = average;
 
                 $(blowOverlayClass).css('margin-top', marginCounter +"%");
-                console.log(globalAverage);
-                console.log((maxMicPeak - micPeakOffset));
+             /*   console.log(globalAverage);
+                console.log((maxMicPeak - micPeakOffset));*/
 
                 if(cookieIsSet && globalAverage > (maxMicPeak - micPeakOffset)) {
 
-                        marginCounter = marginCounter - 2;
+                        marginCounter = marginCounter - 15;
+                    if(marginCounter < -200){
+                        $scope.activatePusher();
+                    }
 
                 }
                 if (takeAverage) {

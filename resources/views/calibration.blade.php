@@ -12,14 +12,17 @@
     </style>
     <div class="landerditmoetjijverwijderen" ng-controller="micStreamAngController" ng-init="initMic()">
        <div>
-
+           @if(isset($currCookie[1]))
+           <h1 >  {{ $currCookie[1] }}</h1>
+           @else
+               <h1>No preset selected</h1>
+           @endif
         @if(isset($presets))
             @foreach($presets as $preset)
                 <div>
-                    <script>
 
-                    </script>
                     <ul class="preset_ul">
+
                     <li>{{$preset->name}}</li>
                     <li>{{$preset->max}}</li>
                         <li>
