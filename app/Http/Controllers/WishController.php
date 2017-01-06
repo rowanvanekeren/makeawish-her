@@ -16,7 +16,7 @@ class WishController extends Controller
         return view('wish');
     }
     public function saveWish(Request $request){
-
+        if(isset($request->name) && isset($request->wish)){
        $wish = new Wish(
             [
                 'name' => $request->name,
@@ -25,7 +25,11 @@ class WishController extends Controller
         );
 
         $wish->save();
+            return(['succes' , $request->name, $request->wish]);
+        }else{
+            return(['error' , 'all fields are required']);
+        }
 
-        return('wish');
+
     }
 }

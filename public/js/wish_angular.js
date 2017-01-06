@@ -1,5 +1,23 @@
-var blowawish = angular.module("blowawish", []).controller("wishAngController", function ($scope, $http) {
-    $scope.submitWish = function () {
+var blowawish = angular.module("blowawish", []);
+
+blowawish.service('CanBlow', function(){
+    var canBlow = {
+        bool: false
+    };
+
+    return {
+        getBool: function () {
+            return canBlow.bool;
+        },
+        setBool: function (bool) {
+            canBlow.bool = bool;
+        }
+    };
+});
+
+    blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
+    var wishConfirmClass = '.wish-confirm';
+        $scope.submitWish = function () {
         var req = {
             method: 'POST',
             url: './save_wish',
@@ -15,19 +33,34 @@ var blowawish = angular.module("blowawish", []).controller("wishAngController", 
 
         $http(req).then(function (data) {
 
-                console.log(data);
+                console.log(data.data);
+                if(data.data[0] == 'succes'){
+                    $scope.openWishConfirm = true;
+                    $scope.closeWishEnter = true;
+                    $scope.wishName = data.data[1];
+                    $scope.wishText = data.data[2];
+                }else if(data.data[0] == 'error'){
+                    $scope.wishError = true;
+                    $scope.wishErrorText = data.data[1];
+                }
             }
         );
-    }
+    };
+    $scope.enableBlow = function () {
+        $(wishConfirmClass).fadeOut();
+        CanBlow.setBool(true);
 
+    };
 });
 
-blowawish.controller("micStreamAngController", function ($scope, $http) {
+blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow) {
+    var calibrating = false;
     var streamOpen = false;
     var takeAverage = false;
     var avgArray = [];
     var marginCounter = 0;
     var blowOverlayClass = '.blowdiv';
+    var wishEndClass = '.wish-end';
     var counterID = '#calCounter';
     var presetInpID = "#preset_number";
     var cookiename = 'micPreset';
@@ -38,9 +71,28 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
     var cookieIsSet = false;
     var pushEnabled = false;
     var countTryStream = 0;
-    var blowSpeed = 15;
+
+    var blowSpeed = 10; //speed for counter blowing
+    var counterEnd = -200; // at this point pusher is fired
+
+    var canBlow = false;
+
+    $scope.$watch(function () { return CanBlow.getBool(); }, function (newValue, oldValue) {
+        if (newValue !== oldValue) {
+            console.log('test');
+            $scope.blowingEnabled = true;
+            $(blowOverlayClass).fadeIn();
+            $scope.wishSend = true;
+            $(wishEndClass).fadeIn(3000);
+            canBlow = true;
+
+        }
+    });
+
+
 
     $scope.initWish = function () {
+        calibrating = false;
         openStream();
         $scope.initCookie();
         function checkStatus() {
@@ -86,6 +138,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
 
     };
     $scope.initCalibrate = function () {
+        calibrating = true;
         $scope.initCookie();
         openStream();
 
@@ -138,7 +191,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
                 maxMicPeak = parseInt(cookievalue[2]);
                 cookieIsSet = true;
                 $scope.cookieError = false;
-        
+
                 console.log(cookievalue);
             }
         });
@@ -209,11 +262,12 @@ blowawish.controller("micStreamAngController", function ($scope, $http) {
                     /*   console.log(globalAverage);
                      console.log((maxMicPeak - micPeakOffset));*/
 
-                    if (cookieIsSet && globalAverage > (maxMicPeak - micPeakOffset) && !pushEnabled) {
-
+                    if (cookieIsSet && globalAverage > (maxMicPeak - micPeakOffset) && !pushEnabled && !calibrating && canBlow) {
+                        console.log('blow counter working');
                         marginCounter = marginCounter - blowSpeed;
-                        if (marginCounter < -200) {
+                        if (marginCounter < counterEnd) {
                             pushEnabled = true;
+
                             $scope.activatePusher();
                         }
 
