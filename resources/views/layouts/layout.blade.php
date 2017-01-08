@@ -46,7 +46,6 @@
     <script src="{{url('/js/jquery-3.1.1.min.js')}}"></script>
 	<script src="{{url('/js/angular.min.js')}}"></script>
 	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
 	<script src="{{url('/js/wish_angular.js')}}"></script>
 
 		@yield('scripts')

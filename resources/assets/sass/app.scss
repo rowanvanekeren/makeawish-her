@@ -4,16 +4,20 @@ $shadow: 'Shadows Into Light', cursive;
 $raleway: 'Raleway', sans-serif;
 $primary-text-color: white;
 
+$drop-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+
 $theme-color-1: #292729;
 $theme-color-2: #FFF;
 
 $break-large: 1240px;
+$break-medium: 650px;
 $break-small: 475px;
 
 html, body {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
 	min-width: 390px;
+	min-height: 650px;
 	background-image: url("../images/background_home.jpg");
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -25,15 +29,76 @@ html, body {
 	justify-content: space-between;
 	align-items: center;
 
-	overflow: hidden;
+	@media screen and (max-height: $break-medium) {
+		background-position: initial;
+	}
 }
 
 canvas {
 	position: absolute;
 	width: 80%!important;
+	bottom: 0;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	label {
+		color: $primary-text-color;
+		font-family: $raleway;
+		font-size: 16px;
+	}
+
+	textarea, input {
+		color: $primary-text-color;
+
+		border: none;
+		font-family: $raleway;
+		font-size: 24px;
+		border-bottom: 2px solid transparent;
+		background-color: transparent;
+		
+		transition: border-bottom 0.2s;
+
+		margin-bottom: 10px;
+
+		&:focus {
+			border: none;
+			border-bottom: 2px solid $primary-text-color;
+			outline: none;
+
+			transition: border-bottom 0.2s;
+		}
+	}
+}
+
+button {
+	width: 100%;
+	font-family: $raleway;
+	font-size: 24px;
+
+	border: none;
+	background-color: $primary-text-color;
+
+	cursor: pointer;
+
+	box-shadow: none;
+	border-radius: 0;
+	transition: box-shadow 0.2s;
+	transition: border-radius 0.2s;
+
+	&:hover {
+		box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
+		border-radius: 3px;
+		transition: box-shadow 0.2s;
+		transition: border-radius 0.2s;
+	}
 }
 
 nav {
+	z-index: 10;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -41,7 +106,7 @@ nav {
 	width: 80%;
 	height: 10%;
 	background: $theme-color-1;
-  	box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+  	box-shadow: $drop-shadow;
 
 	.inner-nav {
 		width: 90%;
@@ -94,27 +159,29 @@ nav {
 
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-content: center;
 	flex-direction: column-reverse;
 
 	.inner-container {
 		width: 100%;
 		height: 80%;
 		background-color: $theme-color-1;
-		box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+		box-shadow: $drop-shadow;
 
 		display: flex;
 		flex-flow: row wrap;
 		justify-content: center;
+		align-content: center;
 
 		.inner-container-left, .inner-container-right {
 			display: flex;
 			flex: 1 0 30%;
 			margin: 3%;
 			background-color: $theme-color-2;
-			box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+			box-shadow: $drop-shadow;
 			border-radius: 5px;
 			z-index: 10;
+			min-width: 250px;
 		}
 
 		.inner-container-left {
@@ -125,6 +192,10 @@ nav {
 
 				font-family: $raleway;
 				font-size: 30px;
+
+				@media screen and (max-width: $break-medium) {
+					font-size: 24px;
+				}
 			}
 		}
 
@@ -133,7 +204,7 @@ nav {
 			justify-content: space-between;
 
 			.wish {
-				flex: 1;	
+				flex: 1 0 auto;	
 				border-bottom: 1px $theme-color-1 solid;
 
 				.quote-box {
@@ -154,24 +225,31 @@ nav {
 						width: 100%;
 						font-family: $raleway;
 						font-size: 30px;
+
+						@media screen and (max-width: $break-medium) {
+							font-size: 24px;
+						}
 					}
 					.quote-author {
 						font-family: $raleway;
 						font-style: italic;
-						padding-top:20px;
-						font-size:1em; 
-						text-align:right;
+						padding-top: 20px;
+						font-size: 1em; 
+						text-align: right;
 					}
 				}					
 			}
 		}
 
 		.card {
+			max-height: 200px;
+			width: 400px;
+
 			display: flex;
-			flex: 0 0 300px;
+
 			background-color: $theme-color-2;
 			margin: 2%;
-			box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2),0px 40px 70px 0px rgba(0, 0, 0, 0.22);
+			box-shadow: $drop-shadow;
 			border-radius: 5px;
 			position: relative;
 
@@ -183,8 +261,8 @@ nav {
 				position: absolute;
 				height: 50px;
 				width: 50px;
-
-				left: 118px;
+				
+				left: 168px;
 				top: -25px;
 
 				border-radius: 50%;
@@ -207,6 +285,8 @@ nav {
 					flex-direction: column;
 					justify-content: space-between;
 
+					hyphens: auto;
+
 					.quote-text {
 						i {
 							font-size: 1.0em;
@@ -223,6 +303,147 @@ nav {
 						font-size:1em; 
 						text-align:right;
 					}
+				}
+			}
+		}
+
+		.wish-confirm {
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+		
+			.wish-confirm-inner {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+
+				text-align: center;
+
+				h2, p, button {
+					width: 30%;
+				}
+
+				h2 {
+					color: $primary-text-color;
+					font-family: $shadow;
+					font-size: 40px;
+					text-transform: uppercase;
+				}
+
+				p {
+					color: $primary-text-color;
+					font-family: $raleway;
+					font-size: 16px;
+				}
+
+				button {
+					font-family: $raleway;
+					font-size: 24px;
+
+					border: none;
+					background-color: $primary-text-color;
+
+					cursor: pointer;
+
+					box-shadow: none;
+					border-radius: 0;
+					transition: box-shadow 0.2s;
+					transition: border-radius 0.2s;
+
+					&:hover {
+						box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
+						border-radius: 3px;
+						transition: box-shadow 0.2s;
+						transition: border-radius 0.2s;
+					}
+				}
+			}
+		}
+
+		.calibration {
+			width: 100%;
+			padding: 3%;
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-around;
+
+			.calibration-inner {
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+
+				.preset-container {
+					display: flex;
+					flex-direction: column;
+
+					.preset-curr {
+						color: $primary-text-color;
+						font-family: $raleway;
+						font-size: 30px;
+					}
+
+					.preset-container-inner {
+						display: flex;
+						justify-content: space-between;
+
+						span, form {
+							width: 25%;
+							margin: 0;
+							padding: 0;
+						}
+
+						span {
+							color: $primary-text-color;
+							font-family: $raleway;
+							font-size: 16px;
+						}
+
+						form {
+							button {
+								background-color: transparent;
+
+								i {
+									color: $primary-text-color;
+								}
+							}
+						}
+					}
+				}
+
+				.preset-calibrate {
+					h1 {
+						color: $primary-text-color;
+						font-family: $raleway;
+					}
+				}
+			}
+		}
+
+		.wish-blow {
+			display: flex;
+
+			.wish-end {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				padding: 5%;
+
+				p {
+					color: $primary-text-color;
+					font-family: $raleway;
+					font-size: 40px;
+
+					text-align: center;
+				}
+
+				span {
+					color: $primary-text-color;
+					font-family: $raleway;
+					font-size: 16px;
 				}
 			}
 		}
@@ -283,21 +504,17 @@ nav {
 }
 
 .blowdiv{
-  position: absolute;
-  background: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-background: -o-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-background: -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
-background: linear-gradient(to top, rgba(255,255,255,0)0%, rgba(255,255,255,1) 50%);
-  width: 100%;
-  height: 200%;
-  z-index: 10;
-  margin-top: 0;
-  left: 0;
-  top:0;
-  opacity: 1;
-  transition: 1s;
+	position: absolute;
+	background: -webkit-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+	background: -o-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+	background: -moz-linear-gradient(top, rgba(255,255,255,0), rgba(255,255,255,1));
+	background: linear-gradient(to top, rgba(255,255,255,0)0%, rgba(255,255,255,1) 50%);
+	width: 100%;
+	height: 200%;
+	z-index: 10;
+	margin-top: 0;
+	left: 0;
+	top:0;
+	opacity: 1;
+	transition: 1s;
 }
-// Variables
-@import "variables";
-
-@import "shame";

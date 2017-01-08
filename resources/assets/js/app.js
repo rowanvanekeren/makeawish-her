@@ -1,10 +1,8 @@
-$('body').click(function() {
-	console.log(this);
-});
-
 particlesJS.load('particles-js', 'assets/particles.json', function() {
   console.log('callback - particles.js config loaded');
 });
+
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * include Vue and Vue Resource. This gives a great starting point for

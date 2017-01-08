@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway|Shadows+Into+Light");
 html, body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   min-width: 390px;
+  min-height: 650px;
   background-image: url("../images/background_home.jpg");
   background-repeat: no-repeat;
   background-position: bottom;
@@ -17,15 +18,82 @@ html, body {
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
-  overflow: hidden;
+}
+
+@media screen and (max-height: 650px) {
+  html, body {
+    background-position: initial;
+  }
 }
 
 canvas {
   position: absolute;
   width: 80% !important;
+  bottom: 0;
+}
+
+form {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+}
+
+form label {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+form textarea, form input {
+  color: white;
+  border: none;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  border-bottom: 2px solid transparent;
+  background-color: transparent;
+  -webkit-transition: border-bottom 0.2s;
+  transition: border-bottom 0.2s;
+  margin-bottom: 10px;
+}
+
+form textarea:focus, form input:focus {
+  border: none;
+  border-bottom: 2px solid white;
+  outline: none;
+  -webkit-transition: border-bottom 0.2s;
+  transition: border-bottom 0.2s;
+}
+
+button {
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  -webkit-transition: border-radius 0.2s;
+  transition: border-radius 0.2s;
+}
+
+button:hover {
+  box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  -webkit-transition: border-radius 0.2s;
+  transition: border-radius 0.2s;
 }
 
 nav {
+  z-index: 10;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
@@ -88,8 +156,7 @@ nav .inner-nav ul li a:hover:after {
   display: flex;
   -webkit-box-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  align-items: center;
+  align-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
   flex-direction: column-reverse;
@@ -105,6 +172,7 @@ nav .inner-nav ul li a:hover:after {
   flex-flow: row wrap;
   -webkit-box-pack: center;
   justify-content: center;
+  align-content: center;
 }
 
 .container .inner-container .inner-container-left, .container .inner-container .inner-container-right {
@@ -117,6 +185,7 @@ nav .inner-nav ul li a:hover:after {
   box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2), 0px 40px 70px 0px rgba(0, 0, 0, 0.22);
   border-radius: 5px;
   z-index: 10;
+  min-width: 250px;
 }
 
 .container .inner-container .inner-container-left .explanation {
@@ -124,6 +193,12 @@ nav .inner-nav ul li a:hover:after {
   padding: 5%;
   font-family: "Raleway", sans-serif;
   font-size: 30px;
+}
+
+@media screen and (max-width: 650px) {
+  .container .inner-container .inner-container-left .explanation {
+    font-size: 24px;
+  }
 }
 
 .container .inner-container .inner-container-right {
@@ -136,7 +211,7 @@ nav .inner-nav ul li a:hover:after {
 
 .container .inner-container .inner-container-right .wish {
   -webkit-box-flex: 1;
-  flex: 1;
+  flex: 1 0 auto;
   border-bottom: 1px #292729 solid;
 }
 
@@ -165,6 +240,12 @@ nav .inner-nav ul li a:hover:after {
   margin-right: 0.4em;
 }
 
+@media screen and (max-width: 650px) {
+  .container .inner-container .inner-container-right .wish .quote-box .quote-text {
+    font-size: 24px;
+  }
+}
+
 .container .inner-container .inner-container-right .wish .quote-box .quote-author {
   font-family: "Raleway", sans-serif;
   font-style: italic;
@@ -174,10 +255,10 @@ nav .inner-nav ul li a:hover:after {
 }
 
 .container .inner-container .card {
+  max-height: 200px;
+  width: 400px;
   display: -webkit-box;
   display: flex;
-  -webkit-box-flex: 0;
-  flex: 0 0 300px;
   background-color: #FFF;
   margin: 2%;
   box-shadow: 0px 27px 24px 0px rgba(0, 0, 0, 0.2), 0px 40px 70px 0px rgba(0, 0, 0, 0.22);
@@ -195,7 +276,7 @@ nav .inner-nav ul li a:hover:after {
   position: absolute;
   height: 50px;
   width: 50px;
-  left: 118px;
+  left: 168px;
   top: -25px;
   border-radius: 50%;
   border: 6px solid white;
@@ -222,6 +303,9 @@ nav .inner-nav ul li a:hover:after {
   flex-direction: column;
   -webkit-box-pack: justify;
   justify-content: space-between;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }
 
 .container .inner-container .card .card_text .quote-box .quote-text {
@@ -241,6 +325,163 @@ nav .inner-nav ul li a:hover:after {
   padding-top: 20px;
   font-size: 1em;
   text-align: right;
+}
+
+.container .inner-container .wish-confirm {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner h2, .container .inner-container .wish-confirm .wish-confirm-inner p, .container .inner-container .wish-confirm .wish-confirm-inner button {
+  width: 30%;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner h2 {
+  color: white;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner p {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner button {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  box-shadow: none;
+  border-radius: 0;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  -webkit-transition: border-radius 0.2s;
+  transition: border-radius 0.2s;
+}
+
+.container .inner-container .wish-confirm .wish-confirm-inner button:hover {
+  box-shadow: 0px 10px 24px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  -webkit-transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  -webkit-transition: border-radius 0.2s;
+  transition: border-radius 0.2s;
+}
+
+.container .inner-container .calibration {
+  width: 100%;
+  padding: 3%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}
+
+.container .inner-container .calibration .calibration-inner {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-curr {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner span, .container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner form {
+  width: 25%;
+  margin: 0;
+  padding: 0;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner span {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner form button {
+  background-color: transparent;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-container .preset-container-inner form button i {
+  color: white;
+}
+
+.container .inner-container .calibration .calibration-inner .preset-calibrate h1 {
+  color: white;
+  font-family: "Raleway", sans-serif;
+}
+
+.container .inner-container .wish-blow {
+  display: -webkit-box;
+  display: flex;
+}
+
+.container .inner-container .wish-blow .wish-end {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 5%;
+}
+
+.container .inner-container .wish-blow .wish-end p {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  text-align: center;
+}
+
+.container .inner-container .wish-blow .wish-end span {
+  color: white;
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
 }
 
 .container .pagination {
@@ -314,153 +555,6 @@ nav .inner-nav ul li a:hover:after {
   opacity: 1;
   -webkit-transition: 1s;
   transition: 1s;
-}
-
-.button-3d {
-  font-family: "Raleway", sans-serif;
-  color: white;
-  font-weight: bold;
-  display: -webkit-box;
-  display: flex;
-  width: 80px;
-  font-size: 0.8em;
-  -webkit-box-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  justify-content: center;
-  padding: 5px;
-  -webkit-transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
-  transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
-  background: #03A9F4;
-  border: solid 1px #1976D2;
-  box-shadow: 1px 0px 0px #1976D2, 0px 1px 0px #1976D2, 2px 1px 0px #1976D2, 1px 2px 0px #1976D2, 3px 2px 0px #1976D2, 2px 3px 0px #1976D2, 4px 3px 0px #1976D2, 3px 4px 0px #1976D2, 5px 4px 0px #1976D2, 4px 5px 0px #1976D2, 6px 5px 0px #1976D2, 5px 6px 0px #1976D2;
-}
-
-.button-3d:active {
-  -webkit-transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
-  transition: margin-top 0.3s ease, margin-left 0.3s ease, box-shadow 0.3s ease;
-  margin-left: 9px;
-  margin-top: 9px;
-  box-shadow: 0px 0px 0px #1976D2;
-}
-
-.custom-style {
-  width: 100%;
-  overflow-y: auto;
-  font-family: "Raleway", sans-serif;
-}
-
-.preset-container {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-}
-
-.preset-container table {
-  width: auto;
-  margin: 0 auto;
-}
-
-.preset-container table tr {
-  position: relative;
-}
-
-.preset-container table td {
-  color: white;
-  position: relative;
-  width: 60px;
-  height: 30px;
-}
-
-.preset-container table td div {
-  position: absolute;
-}
-
-.preset-container table td .choose {
-  position: absolute;
-}
-
-.preset-container table td .delete {
-  position: absolute;
-  left: 30px;
-}
-
-.preset-container table .preset-name {
-  width: 180px !important;
-}
-
-.preset-new {
-  width: 100%;
-  margin-top: 30px;
-}
-
-.preset-new ul {
-  width: 550px;
-  padding: 0;
-  margin: 0 auto;
-}
-
-.preset-new ul li {
-  width: 180px;
-  height: 20px;
-  display: inline-block;
-}
-
-.preset-new ul div {
-  position: relative;
-}
-
-.preset-new ul div .button-3d {
-  width: 90px;
-  position: absolute;
-}
-
-.custom-box {
-  height: 20px;
-  padding: 5px;
-  border: 0 solid white;
-  border-bottom: 2px dotted #9a2e2b;
-  background-color: rgba(255, 169, 156, 0);
-  color: white;
-  font-family: "Raleway", sans-serif;
-}
-
-.custom-box:focus {
-  border-bottom: 2px dotted red;
-  /* box-shadow: 0 0px 0px rgba(229, 103, 23, 0.075) inset, 0 0 8px rgba(229, 103, 23, 0.6);*/
-  outline: 0 none;
-  box-shadow: none;
-  -webkit-transition: 1s;
-  transition: 1s;
-}
-
-.preset-curr {
-  color: white;
-  font-family: "Raleway", sans-serif;
-  width: 100%;
-  text-align: center;
-}
-
-.preset-calibrate {
-  width: 100%;
-}
-
-.preset-calibrate .button-3d {
-  width: 300px;
-  margin: 0 auto;
-  margin-top: 30px;
-}
-
-.preset-calibrate h1 {
-  width: 100%;
-  text-align: center;
-  color: white;
-}
-
-.wish-confirm {
-  background-color: white;
-  width: 500px;
-  height: 500px;
 }
 
 /*# sourceMappingURL=app.css.map */

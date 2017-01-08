@@ -10,7 +10,7 @@
 			<div class="card_text">
 				<div class="quote-box">
 					<div class="quote-text">
-						<i class="fa fa-quote-left"></i><span id="text">{{ str_limit(ucfirst($wish->wish), 100) }}</span>
+						<i class="fa fa-quote-left"></i><span id="text">{{ str_limit(ucfirst($wish->wish), 50) }}</span>
 					</div>
 					<div class="quote-author">
 						- <span id="author">{{ ucfirst($wish->name) }}</span>
