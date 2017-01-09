@@ -42,7 +42,7 @@
                         <form method="POST" action="./savepreset">
                             {{ csrf_field() }}
                             <input class="custom-box" type="text" id="preset_name" name="preset_name" placeholder="Preset naam" required autofocus/>
-                            <input class="custom-box" type="number" id="preset_number" name="preset_number" placeholder="Niveau" disabled required/>
+                            <input class="custom-box" type="number" id="preset_number" name="preset_number" placeholder="Niveau" required/>
                             <button class="button-3d" type="submit" name="submit">Sla preset op</button>
                         </form>
                     </div>

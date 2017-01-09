@@ -22,24 +22,9 @@
     </script>
 </head>
 <body ng-app="blowawish">
-	<nav>
-		<div class="inner-nav">
-			<ul>
-				<li>
-					<a href="/home">Home</a>
-				</li>
-				<li>
-					<img src="" alt="Logo Blow-A-Wish">
-				</li>
-				<li>
-					<a href="/overview">Wish</a>
-				</li>
-			</ul>
-		</div>	
-	</nav>
 
-		@yield('content')
-    
+	
+	@yield('content')
 
 
     <!-- Scripts -->

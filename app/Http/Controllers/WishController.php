@@ -8,7 +8,7 @@ use App\Wish;
 class WishController extends Controller
 {
     public function getWishes(){
-        $wishes = Wish::paginate(6);
+        $wishes = Wish::paginate(4);
         return view('overview', ['wishes' => $wishes]);
     }
 
@@ -27,7 +27,7 @@ class WishController extends Controller
         $wish->save();
             return(['succes' , $request->name, $request->wish]);
         }else{
-            return(['error' , 'all fields are required']);
+            return(['error' , 'Alle velden moeten ingevuld worden!']);
         }
 
 

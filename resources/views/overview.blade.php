@@ -6,7 +6,6 @@
 	<div class="inner-container" id="particles-js">
 		@foreach($wishes as $wish)
 		<div class="card">
-			<div class="card_handle"></div>
 			<div class="card_text">
 				<div class="quote-box">
 					<div class="quote-text">
