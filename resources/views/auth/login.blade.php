@@ -1,6 +1,3 @@
-@extends('layouts.layout')
-
-@section('content')
 <div class="container">
     <div class="inner-container">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
@@ -50,4 +47,3 @@
         </form>
     </div>  
 </div>
-@endsection

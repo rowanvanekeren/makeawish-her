@@ -32,6 +32,19 @@ html, body {
 	flex-direction: column;
 }
 
+nav {
+	display: flex;
+
+	justify-content: center;
+	align-items: center;
+
+	padding-bottom: 5%;
+
+	img {
+		width: 100%;
+	}
+}
+
 .container {
 	display: flex;
 
@@ -40,9 +53,9 @@ html, body {
 	justify-content: space-around;
 	align-items: center;
 
-	padding-top: 5%;
-
 	.steps {
+		width: 100%;
+
 		display: flex;
 
 		flex-direction: row;
@@ -53,6 +66,7 @@ html, body {
 		.wishit, .blowit, .instait {
 			display: flex;
 
+			flex: 1;
 			flex-direction: column;
 			align-items: center;
 
@@ -85,11 +99,76 @@ html, body {
 			border: 3px solid $primary-text-color;
 			text-decoration: none;
 			font-family: $fontBig;
-			font-size: 24px;
+			font-size: 60px;
 			color: black;
 
 			text-align: center;
 		}
 	}
 
+	.wish-enter {
+		width: 100%;
+		height: 100%;
+
+		position: relative;
+
+		display: flex;
+
+		justify-content: center;
+		align-items: center;
+
+		background-image: url('/images/tekstballon.png');
+		background-repeat: no-repeat;
+		background-size: 80%;
+		background-position: center;
+		
+
+		form {
+			width: 80%;	
+			padding-bottom: 15%;
+
+			display: flex;
+			justify-content: center;
+
+			input#wish {
+				width: 70%;
+
+				border: none;
+				border-bottom: none;
+
+
+				box-sizing: border-box;
+
+
+				font-family: $fontSmall;
+				font-size: 24px;
+
+				transition: border-bottom 0.4s;
+
+				&:focus {
+					border-bottom: 1px solid black;
+					outline: none;
+
+					transition: border-bottom 0.4s;
+				}
+			}
+
+			.button-wish {
+				position: absolute;
+
+				bottom: 25%;
+				right: 10%;
+
+				width: 20%;
+				height: 40px;
+
+				border: 3px solid $primary-text-color;
+				text-decoration: none;
+				font-family: $fontBig;
+				font-size: 24px;
+				color: black;
+				background-color: transparent;
+			}
+		}
+	}
 }

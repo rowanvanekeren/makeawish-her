@@ -16,7 +16,7 @@ blowawish.service('CanBlow', function(){
 });
 
     blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
-    var wishConfirmClass = '.wish-confirm';
+        var wishConfirmClass = '.wish-confirm';
         $scope.submitWish = function () {
         var req = {
             method: 'POST',
