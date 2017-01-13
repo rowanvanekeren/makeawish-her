@@ -87,6 +87,8 @@ nav img {
 .container .button-container a {
   width: 100%;
   height: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: -webkit-box;
   display: flex;
   -webkit-box-pack: center;
