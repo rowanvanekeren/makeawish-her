@@ -168,23 +168,7 @@ nav {
   background-color: transparent;
 }
 
-.wish-blow {
-  width: 100%;
-  height: 100%;
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
-  -webkit-box-align: start;
-  align-items: flex-start;
-}
-
-.wish-blow img {
-  width: 20%;
-  padding-top: 20%;
-}
-
-.wish-blow .blowdiv {
+.blowdiv {
   position: absolute;
   width: 400px;
   height: 400px;
@@ -197,7 +181,7 @@ nav {
   transition: 1s;
 }
 
-.wish-blow .blowdiv .blowdiv-inner {
+.blowdiv .blowdiv-inner {
   position: relative;
   background-image: url("/images/tekstballon.png");
   background-repeat: no-repeat;
@@ -216,7 +200,7 @@ nav {
   flex-direction: column;
 }
 
-.wish-blow .blowdiv .blowdiv-inner h2, .wish-blow .blowdiv .blowdiv-inner p {
+.blowdiv .blowdiv-inner h2, .blowdiv .blowdiv-inner p {
   border: none;
   border-bottom: none;
   box-sizing: border-box;
@@ -227,7 +211,7 @@ nav {
   transition: border-bottom 0.4s;
 }
 
-.wish-blow .blowdiv .blowdiv-inner p {
+.blowdiv .blowdiv-inner p {
   padding-bottom: 100px;
 }
 

@@ -182,21 +182,7 @@ nav {
 	}
 }
 
-.wish-blow {
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-
-	justify-content: center;
-	align-items: flex-start;
-	
-	img {
-		width: 20%;
-		padding-top: 20%;
-	}
-
-	.blowdiv{
+.blowdiv{
 	position: absolute;
 	width: 400px;
 	height: 400px;
@@ -243,5 +229,4 @@ nav {
 			padding-bottom: 100px;
 		}
 	}
-}
 }

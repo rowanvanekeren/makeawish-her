@@ -35,7 +35,6 @@ blowawish.service('CanBlow', function(){
 
                 console.log(data.data);
                 if(data.data[0] == 'succes'){
-                    $scope.openWishConfirm = true;
                     $scope.closeWishEnter = true;
                     $scope.wishName = data.data[1];
                     $scope.wishText = data.data[2];
@@ -47,9 +46,7 @@ blowawish.service('CanBlow', function(){
         );
     };
     $scope.enableBlow = function () {
-        $(wishConfirmClass).fadeOut();
         CanBlow.setBool(true);
-
     };
 });
 
