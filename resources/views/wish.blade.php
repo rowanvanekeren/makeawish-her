@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$general_errors = new \App\Http\Helpers\General_Errors();
+$general_errors = new \App\Http\Helpers\general_errors();
 $preset_error = $general_errors->general_errors('cookiePreset');
 ?>
 <div ng-controller="wishAngController" class="container">
