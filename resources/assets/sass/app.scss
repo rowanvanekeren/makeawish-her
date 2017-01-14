@@ -39,10 +39,6 @@ nav {
 	align-items: center;
 
 	padding-bottom: 5%;
-
-	img {
-		width: 100%;
-	}
 }
 
 .container {
@@ -80,6 +76,8 @@ nav {
 
 			p {
 				text-align: center;
+
+				font-size: 1.5em;
 			}
 		}
 	}
@@ -91,6 +89,9 @@ nav {
 			width: 100%;
 			height: 50px;
 
+			padding-top: 10px;
+			padding-bottom: 10px;
+
 			display: flex;
 
 			justify-content: center;
@@ -99,7 +100,7 @@ nav {
 			border: 3px solid $primary-text-color;
 			text-decoration: none;
 			font-family: $fontBig;
-			font-size: 60px;
+			font-size: 3em;
 			color: black;
 
 			text-align: center;
@@ -128,9 +129,11 @@ nav {
 			padding-bottom: 15%;
 
 			display: flex;
+			flex-direction: column;
 			justify-content: center;
+			align-items: center;
 
-			input#wish {
+			input#wish, input#name {
 				width: 70%;
 
 				border: none;
@@ -139,9 +142,10 @@ nav {
 
 				box-sizing: border-box;
 
+				text-align: center;
 
 				font-family: $fontSmall;
-				font-size: 24px;
+				font-size: 1.5em;
 
 				transition: border-bottom 0.4s;
 
@@ -153,10 +157,15 @@ nav {
 				}
 			}
 
+			input#name {
+				width: 20%;
+				margin-top: 10px;
+			}
+
 			.button-wish {
 				position: absolute;
 
-				bottom: 25%;
+				bottom: 20%;
 				right: 10%;
 
 				width: 20%;
@@ -169,6 +178,55 @@ nav {
 				color: black;
 				background-color: transparent;
 			}
+		}
+	}
+}
+
+.blowdiv{
+	position: absolute;
+	width: 800px;
+	height: 800px;
+	z-index: 10;
+	margin-top: 0;
+	left: 50%;
+	top:500px;
+	opacity: 1;
+	transition: 1s;
+
+	.blowdiv-inner {
+		position:relative;
+		background-image: url('/images/tekstballon.png');
+		background-repeat: no-repeat;
+		background-size: cover;
+		height: 100%;
+		width: 100%;
+		left: -50%;
+		
+		display: flex;
+
+		justify-content: center;
+		align-items: center;
+
+		flex-direction: column;
+
+		h2, p {
+
+				border: none;
+				border-bottom: none;
+
+
+				box-sizing: border-box;
+
+				text-align: center;
+
+				font-family: $fontSmall;
+				font-size: 1.5em;
+
+				transition: border-bottom 0.4s;
+		}
+
+		p {
+			padding-bottom: 100px;
 		}
 	}
 }

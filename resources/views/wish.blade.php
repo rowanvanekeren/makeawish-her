@@ -9,8 +9,8 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     <div class="wish-enter" ng-hide="closeWishEnter">
         <form ng-submit="submitWish()">
             {{ csrf_field() }}
-            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}"  required autofocus placeholder="Type your wish here...">
-            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}"  required autofocus placeholder="Naam">
+            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here...">
+            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam">
             
             @if ($errors->has('wish'))
             <span class="help-block">
@@ -79,7 +79,14 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     --}}
 
     <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()">
-        <div class="blowdiv" ng-show="blowingEnabled"></div>
+        <div class="blowdiv" ng-show="blowingEnabled">
+            <div class="blowdiv-inner">
+                <h2>@{{ wishText }}</h2>
+                <p>- @{{ wishName }} </p>
+            </div>
+        </div>
+
+        <!--
         <div class="wish-end" ng-show="wishSend">
             <p>
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
@@ -88,6 +95,7 @@ $preset_error = $general_errors->general_errors('cookiePreset');
             </p>
             <span>- Edgar Allan Poe, Eleonora</span>
         </div >
+        -->
         <div ng-show="cookieError">
             <div class="error">{{$preset_error}}</div>
             <a href="./calibration">Choose preset</a>

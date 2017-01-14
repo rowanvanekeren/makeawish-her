@@ -26,8 +26,8 @@ Route::post('/pusher', 'PusherController@pushWish');
 Route::post('/savepreset', 'MicController@savePreset');
 Route::post('/deletepreset', 'MicController@deletePreset');
 Route::post('/choosepreset', 'MicController@choosePreset');
+Route::get('/wish', 'WishController@getBlowAWishPage');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/calibration', 'MicController@calibration');
-    Route::get('/wish', 'WishController@getBlowAWishPage');
 });
