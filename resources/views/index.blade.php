@@ -23,21 +23,22 @@
 </head>
 <body ng-app="blowawish">
 	<nav>
-		<img src="/images/logo.png" alt="Het logo van InstaWish">
+		{{ asset('images/logo.png') }}
+		<img src="{{ asset('images/logo.png') }}" alt="Het logo van InstaWish">
 	</nav>
 
 	<div class="container">
 		<div class="steps">
 			<div class="wishit">
-				<img src="/images/tekstballon.png" alt="">
+				<img src="{{ asset('images/tekstballon.png') }}" alt="">
 				<p>Wish it</p>
 			</div>
 			<div class="blowit">
-				<img src="/images/wind.png" alt="">
+				<img src="{{ asset('images/wind.png') }}" alt="">
 				<p>Blow it</p>
 			</div>
 			<div class="instait">
-				<img src="/images/insta.png" alt="">
+				<img src="{{ asset('images/insta.png') }}" alt="">
 				<p>Insta it</p>
 			</div>
 		</div>
