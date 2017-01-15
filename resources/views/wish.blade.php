@@ -10,8 +10,8 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         <form ng-submit="submitWish()"  style="background-image: url({{asset('images/tekstballon-2.png')}})">
             {{ csrf_field() }}
 
-            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80">
-            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20">
+            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80" required>
+            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20" required>
 
             
             @if ($errors->has('wish'))
