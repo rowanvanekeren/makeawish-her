@@ -295,10 +295,6 @@ nav {
   transition: border-bottom 0.4s;
 }
 
-.container .wish-blow .blowdiv .blowdiv-inner p {
-  padding-bottom: 100px;
-}
-
 .container .wish-end {
   display: -webkit-box;
   display: flex;
