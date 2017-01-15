@@ -229,8 +229,6 @@ nav img {
 .container .wish-blow img {
   width: 20%;
   margin-top: 5%;
-  -webkit-animation: arrow 2s infinite;
-  animation: arrow 2s infinite;
 }
 
 @-webkit-keyframes arrow {
@@ -280,7 +278,8 @@ nav img {
 .container .wish-blow .blowdiv .blowdiv-inner {
   position: relative;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 80%;
+  background-position: center;
   height: 100%;
   width: 100%;
   left: -50%;
@@ -358,7 +357,7 @@ nav img {
   color: white;
   z-index: -50;
   font-family: arial, sans-serif;
-  margin-top: 155px;
+  margin-top: 145px;
 }
 
 .wish-end .instaWish h1 {
