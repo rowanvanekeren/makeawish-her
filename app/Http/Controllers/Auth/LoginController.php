@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Http\Helpers\Auth_Errors;
+use App\Http\Helpers\auth_errors;
 use Validator;
 class LoginController extends Controller
 {
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        $error = new Auth_Errors();
+        $error = new auth_errors();
         $this->validate($request, [
             'name' => 'required|max:255',
             'password' => 'required|max:255',

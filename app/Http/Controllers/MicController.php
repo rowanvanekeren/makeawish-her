@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Helpers\General_Errors;
+use App\Http\Helpers\general_errors;
 use App\MicPreset;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -51,7 +51,7 @@ class MicController extends Controller
     }
 
     public function getCurrentCookie(){
-        $error = new General_Errors();
+        $error = new general_errors();
         $cookieName = 'micPreset';
         if(isset($_COOKIE[$cookieName])){
             $value = $_COOKIE[$cookieName];

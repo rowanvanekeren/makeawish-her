@@ -2,7 +2,7 @@
 
 @section('content')
 <?php
-$general_errors = new \App\Http\Helpers\General_Errors();
+$general_errors = new \App\Http\Helpers\general_errors();
 $preset_error = $general_errors->general_errors('cookiePreset');
 ?>
 <div ng-controller="wishAngController" class="container">
@@ -78,10 +78,16 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     </form>
     --}}
 
+<<<<<<< HEAD
     <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
         <img src="/images/upload.svg" alt="">
         <div class="blowdiv">
             <div class="blowdiv-inner">
+=======
+    <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()">
+        <div class="blowdiv" ng-show="blowingEnabled">
+            <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon.png')}} )">
+>>>>>>> origin/master
                 <h2>@{{ wishText }}</h2>
                 <p>- @{{ wishName }} </p>
             </div>

@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="/css/app.css" rel="stylesheet">
+    <link href="{{asset('css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -23,21 +23,22 @@
 </head>
 <body ng-app="blowawish">
 	<nav>
-		<img src="/images/logo.png" alt="Het logo van InstaWish">
+		{{ asset('images/logo.png') }}
+		<img src="{{ asset('images/logo.png') }}" alt="Het logo van InstaWish">
 	</nav>
 
 	<div class="container">
 		<div class="steps">
 			<div class="wishit">
-				<img src="/images/tekstballon.png" alt="">
+				<img src="{{ asset('images/tekstballon.png') }}" alt="">
 				<p>Wish it</p>
 			</div>
 			<div class="blowit">
-				<img src="/images/wind.png" alt="">
+				<img src="{{ asset('images/wind.png') }}" alt="">
 				<p>Blow it</p>
 			</div>
 			<div class="instait">
-				<img src="/images/insta.png" alt="">
+				<img src="{{ asset('images/insta.png') }}" alt="">
 				<p>Insta it</p>
 			</div>
 		</div>
@@ -55,6 +56,6 @@
 	<script src="{{url('/js/wish_angular.js')}}"></script>
 
 		@yield('scripts')
-    <script src="/js/app.js"></script>
+    <script src="{{asset('js/app.js')}}"></script>
 </body>
 </html>
