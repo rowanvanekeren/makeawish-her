@@ -17,7 +17,7 @@ class InstaController extends Controller
        $path = base_path() . "/public/images/insta/". $img ;
 /*        $path = base_path() . "/public/images/insta/testinsta.jpg";*/
 
-        $caption = 'Weer een wens via InstaWish, doe zelf een wens op www.zondaginantwerpen.be!';
+        $caption = 'Weer een wens via InstaWish, doe zelf een wens op https://zondaginantwerpen.be !';
         require("../vendor/autoload.php");
         $instagram = new \Instagram\Instagram();
         $instagram->login("instablowawish", "blowblowitaway");
