@@ -20,7 +20,7 @@ $preset_error = $general_errors->general_errors('cookiePreset');
             </span>
             @endif
 
-            <button type="submit" class="button-wish" ng-click="enableBlow()">GO</button>
+            <button type="submit" class="button-wish">GO</button>
         </form>
 
         <!-- Als insta post niet meer werkt, deze div terug buiten wish-enter zetten -->
