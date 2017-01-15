@@ -213,6 +213,10 @@ nav {
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+}
+
+.container .wish-blow img {
+  width: 20%;
   padding-top: 5%;
   -webkit-animation: arrow 2s infinite;
   animation: arrow 2s infinite;
@@ -240,10 +244,6 @@ nav {
   100% {
     padding-top: 5%;
   }
-}
-
-.container .wish-blow img {
-  width: 20%;
 }
 
 .container .wish-blow .text {
@@ -295,7 +295,7 @@ nav {
   transition: border-bottom 0.4s;
 }
 
-.container .wish-end {
+.wish-end {
   height: 80%;
   display: -webkit-box;
   display: flex;
@@ -307,14 +307,28 @@ nav {
   align-items: center;
 }
 
-.container .wish-end .text {
+.wish-end .insta-layout {
+  background-image: url("../images/instalayout.png");
+  z-index: 0;
+  width: 400px;
+  height: 740px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.wish-end .text {
   font-family: BigJohn;
   font-size: 4em;
   text-align: center;
   color: #243477;
 }
 
-.container .wish-end .instaWish {
+.wish-end .instaWish {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -332,16 +346,17 @@ nav {
   color: white;
   z-index: -50;
   font-family: arial, sans-serif;
+  margin-top: 155px;
 }
 
-.container .wish-end .instaWish h1 {
+.wish-end .instaWish h1 {
   word-wrap: break-word;
   width: 80%;
   text-align: center;
   font-family: BigJohn;
 }
 
-.container .wish-end .instaWish h3 {
+.wish-end .instaWish h3 {
   text-align: right;
   width: 80%;
   font-family: SlimJoe;
