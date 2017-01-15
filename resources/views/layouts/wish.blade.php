@@ -32,8 +32,6 @@
    {{-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>--}}
     <script src="{{url('/js/html2canvas.js')}}"></script>
 	<script src="{{url('/js/angular.min.js')}}"></script>
-
-	<script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	<script src="{{url('/js/wish_angular.js')}}"></script>
 
 		@yield('scripts')

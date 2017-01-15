@@ -1,11 +1,11 @@
 @font-face {
   font-family: BigJohn;
-  src: url("/fonts/BigJohn.otf");
+  src: url("../fonts/BigJohn.otf");
 }
 
 @font-face {
   font-family: SlimJoe;
-  src: url("/fonts/SlimJoe.otf");
+  src: url("../fonts/SlimJoe.otf");
 }
 
 html, body {
@@ -105,19 +105,20 @@ nav {
   position: relative;
   display: -webkit-box;
   display: flex;
-  -webkit-box-pack: center;
-  justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  justify-content: space-around;
   -webkit-box-align: center;
   align-items: center;
-  background-image: url("/images/tekstballon.png");
-  background-repeat: no-repeat;
-  background-size: 80%;
-  background-position: center;
 }
 
 .container .wish-enter form {
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
   width: 80%;
-  padding-bottom: 15%;
+  height: 40%;
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: vertical;
@@ -130,7 +131,7 @@ nav {
 }
 
 .container .wish-enter form input#wish, .container .wish-enter form input#name {
-  width: 70%;
+  width: 60%;
   border: none;
   border-bottom: none;
   box-sizing: border-box;
@@ -155,7 +156,7 @@ nav {
 
 .container .wish-enter form .button-wish {
   position: absolute;
-  bottom: 20%;
+  top: 50%;
   right: 10%;
   width: 20%;
   height: 40px;
@@ -165,6 +166,40 @@ nav {
   font-size: 24px;
   color: black;
   background-color: transparent;
+}
+
+.instaWish {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  justify-content: space-around;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 500px !important;
+  height: 500px !important;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 60px;
+  z-index: -50;
+  top: 50%;
+  font-family: arial, sans-serif;
+}
+
+.instaWish h1 {
+  word-wrap: break-word;
+  text-shadow: 2px 2px #292728 !important;
+  padding-top: 15px;
+}
+
+.instaWish h3 {
+  text-shadow: 2px 2px #292728;
+  text-align: right;
+  width: 100%;
 }
 
 .blowdiv {
