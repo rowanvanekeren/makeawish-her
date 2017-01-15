@@ -23,7 +23,6 @@
 </head>
 <body ng-app="blowawish">
 	<nav>
-		{{ asset('images/logo.png') }}
 		<img src="{{ asset('images/logo.png') }}" alt="Het logo van InstaWish">
 	</nav>
 
