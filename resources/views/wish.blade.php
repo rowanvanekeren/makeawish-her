@@ -84,10 +84,12 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     </form>
     --}}
 
+
     <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
         <img src="/images/upload.svg" alt="">
         <div class="blowdiv">
             <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon.png')}} )">
+
                 <h2>@{{ wishText }}</h2>
                 <p>- @{{ wishName }} </p>
             </div>
