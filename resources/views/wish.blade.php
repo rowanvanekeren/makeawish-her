@@ -10,8 +10,8 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         <form ng-submit="submitWish()"  style="background-image: url({{asset('images/tekstballon-2.png')}})">
             {{ csrf_field() }}
 
-            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80" required>
-            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20" required>
+            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80">
+            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20">
 
             
             @if ($errors->has('wish'))
@@ -27,7 +27,7 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         <div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
             <h1>
                 <i class="fa fa-quote-left" aria-hidden="true"></i>
-                @{{ wishFormWish }}
+                    @{{ wishFormWish }}
                 <i class="fa fa-quote-right" aria-hidden="true"></i>
             </h1>
             <h3>@{{ wishFormName }}</h3>
@@ -45,12 +45,8 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         <img src="{{asset('/images/upload-2.svg')}}" alt=""  ng-hide="wishSend">
         <div class="blowdiv">
             <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon-2.png')}} )">
-                <h1>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                    @{{ wishFormWish }}
-                    <i class="fa fa-quote-right" aria-hidden="true"></i>
-                </h1>
-                <h3>@{{ wishFormName }}</h3>
+                <h2>@{{ wishText }}</h2>
+                <p>@{{ wishName }}</p>
             </div>
         </div>
 
