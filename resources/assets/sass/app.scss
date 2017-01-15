@@ -221,7 +221,10 @@ nav {
 
 		justify-content: space-between;
 		align-items: center;
-		padding-top: 5%;
+
+		img {
+			width: 20%;
+			padding-top: 5%;
 		animation: arrow 2s infinite;
 
 		@keyframes arrow {
@@ -229,9 +232,6 @@ nav {
 			50% { padding-top: 10%; }
 			100% { padding-top: 5%; }
 		}
-
-		img {
-			width: 20%;
 		}
 
 		.text {

@@ -34,7 +34,64 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         </div>
     </div>
 
-    <!--
+    {{--    
+    <form action="./pusher" method="post">
+        {{ csrf_field() }}
+        <input type="submit">
+    </form>
+    --}}
+
+    <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
+        <img src="{{asset('/images/upload-2.svg')}}" alt=""  ng-hide="wishSend">
+        <div class="blowdiv">
+            <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon-2.png')}} )">
+                <h2>@{{ wishText }}</h2>
+                <p>- @{{ wishName }}</p>
+            </div>
+        </div>
+
+        <div class="text" ng-hide="wishSend">
+            <p>Now blow it away!</p>
+        </div>
+
+        <div class="wish-end"  ng-show="wishSend">
+            <div class="insta-layout">
+                <div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
+                    <h1>
+                        <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        @{{ wishFormWish }}
+                        <i class="fa fa-quote-right" aria-hidden="true"></i>
+                    </h1>
+                    <h3>@{{ wishFormName }}</h3>
+                </div>
+            </div>
+
+            <div class="text">
+                See it on Insta!
+
+            </div>
+
+            <div>
+                <p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    Those who dream by day are cognizant of many things which escape those who dream only by night.
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </p>
+                <span>- Edgar Allan Poe, Eleonora</span>
+            </div>
+        </div>
+
+
+        <div ng-show="cookieError">
+            <div class="error">{{$preset_error}}</div>
+            <a href="./calibration">Choose preset</a>
+        </div>
+    </div>
+
+</div>
+@endsection
+
+<!--
     <form class="" ng-submit="submitWish()" ng-hide="closeWishEnter">
         {{ csrf_field() }}
 
@@ -82,51 +139,3 @@ $preset_error = $general_errors->general_errors('cookiePreset');
         </div>
     </div>
     -->
-
-    {{--    
-    <form action="./pusher" method="post">
-        {{ csrf_field() }}
-        <input type="submit">
-    </form>
-    --}}
-
-    <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
-        <img src="../images/upload-2.svg" alt=""  ng-hide="wishSend">
-        <div class="blowdiv">
-            <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon-2.png')}} )">
-                <h2>@{{ wishText }}</h2>
-                <p>- @{{ wishName }} </p>
-            </div>
-        </div>
-
-        <div class="text" ng-hide="wishSend">
-            <p>Now blow it away!</p>
-        </div>
-        <style>
-            .wish-end{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                z-index: 20;
-            }
-        </style>
-        <div class="wish-end"  ng-show="wishSend">
-            <div>
-                <p>
-                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                    Those who dream by day are cognizant of many things which escape those who dream only by night.
-                    <i class="fa fa-quote-right" aria-hidden="true"></i>
-                </p>
-                <span>- Edgar Allan Poe, Eleonora</span>
-            </div>
-        </div>
-
-
-        <div ng-show="cookieError">
-            <div class="error">{{$preset_error}}</div>
-            <a href="./calibration">Choose preset</a>
-        </div>
-    </div>
-
-</div>
-@endsection

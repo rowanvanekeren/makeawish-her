@@ -213,6 +213,10 @@ nav {
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+}
+
+.container .wish-blow img {
+  width: 20%;
   padding-top: 5%;
   -webkit-animation: arrow 2s infinite;
   animation: arrow 2s infinite;
@@ -240,10 +244,6 @@ nav {
   100% {
     padding-top: 5%;
   }
-}
-
-.container .wish-blow img {
-  width: 20%;
 }
 
 .container .wish-blow .text {
