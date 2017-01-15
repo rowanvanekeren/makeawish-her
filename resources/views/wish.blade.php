@@ -5,7 +5,44 @@
 $general_errors = new \App\Http\Helpers\general_errors();
 $preset_error = $general_errors->general_errors('cookiePreset');
 ?>
+<style>
+    .instaWish{
+
+        position: absolute;
+        width: 500px !important;
+        height: 500px !important;
+        overflow:hidden;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        color:white;
+        padding:15px;
+        z-index: -50;
+        top: 50%;
+
+        font-family: arial, sans-serif;
+    }
+    .instaWish h1{
+
+        word-wrap: break-word;
+        text-shadow: 2px 2px #292728 !important;
+        text-align: center;
+        padding-top: 15px;
+
+    }
+    .instaWish h3{
+        position: absolute;
+        bottom:15px;
+        right:15px;
+        text-shadow: 2px 2px #292728;
+    }
+</style>
 <div ng-controller="wishAngController" class="container">
+    <div id='insta_image' class="instaWish "  style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
+        <h1>"@{{ wishFormWish }}"</h1>
+        <h3>-@{{ wishFormName }}</h3>
+
+    </div>
     <div class="wish-enter" ng-hide="closeWishEnter">
         <form ng-submit="submitWish()">
             {{ csrf_field() }}

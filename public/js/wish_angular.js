@@ -49,8 +49,37 @@ blowawish.service('CanBlow', function(){
     $scope.enableBlow = function () {
         $(wishConfirmClass).fadeOut();
         CanBlow.setBool(true);
-
+        $scope.postToInsta();
     };
+        $scope.postToInsta = function(){
+
+                html2canvas($("#insta_image"), {
+                    onrendered: function(canvas) {
+                        theCanvas = canvas;
+                        /* document.body.appendChild(canvas);*/
+                        var data = theCanvas.toDataURL('image/jpeg');
+                        $http.post('./saveInstaImage',{
+
+                            image: data
+
+                        }).then(function(data){
+                            console.log(data.data)
+                        });
+                        // Convert and download as image
+                        /* Canvas2Image.saveAsPNG(canvas);*/
+                       /* $(".test_image").append(canvas);*/
+
+                        // Clean up
+                        //document.body.removeChild(canvas);
+                    }
+
+            });
+        };
+});
+
+blowawish.controller("InstaAngController", function ($scope, $http, CanBlow) {
+
+
 });
 
 blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow) {
@@ -267,7 +296,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                         marginCounter = marginCounter - blowSpeed;
                         if (marginCounter < counterEnd) {
                             pushEnabled = true;
-
+                            console.log('pusher activated');
                             $scope.activatePusher();
                         }
 
