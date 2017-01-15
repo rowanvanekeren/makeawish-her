@@ -45,6 +45,10 @@ nav {
 	align-items: center;
 
 	padding-bottom: 5%;
+
+	img {
+		width: 80%;
+	}
 }
 
 .container {
@@ -288,6 +292,8 @@ nav {
 					font-size: 1.5em;
 
 					transition: border-bottom 0.4s;
+
+					color: white;
 				}
 			}
 		}
