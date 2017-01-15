@@ -21,7 +21,7 @@
         ]); ?>
     </script>
 </head>
-<body ng-app="blowawish">
+<body ng-app="blowawish" style="background-image: url({{asset('images/background.jpg')}})">>
 
 	
 	@yield('content')

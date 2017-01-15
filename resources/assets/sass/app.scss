@@ -32,6 +32,10 @@ html, body {
 	flex-direction: column;
 
 	overflow: hidden;
+
+	background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 nav {
@@ -98,10 +102,11 @@ nav {
 			align-items: center;
 
 			border: 3px solid $primary-text-color;
+			background-color: $primary-text-color;
 			text-decoration: none;
 			font-family: $fontBig;
 			font-size: 3em;
-			color: black;
+			color: white;
 
 			text-align: center;
 		}
@@ -134,11 +139,12 @@ nav {
 			align-items: center;
 
 			input#wish, input#name {
+				background-color: transparent;
+				color: white;
 				width: 60%;
 
 				border: none;
 				border-bottom: none;
-
 
 				box-sizing: border-box;
 
@@ -150,7 +156,7 @@ nav {
 				transition: border-bottom 0.4s;
 
 				&:focus {
-					border-bottom: 1px solid black;
+					border-bottom: 1px solid white;
 					outline: none;
 
 					transition: border-bottom 0.4s;
@@ -165,8 +171,7 @@ nav {
 			.button-wish {
 				position: absolute;
 				
-				top: 35%;
-				right: 10%;
+				top: 45%;
 
 				width: 20%;
 				height: 40px;
@@ -175,8 +180,8 @@ nav {
 				text-decoration: none;
 				font-family: $fontBig;
 				font-size: 24px;
-				color: black;
-				background-color: transparent;
+				color: white;
+				background-color: $primary-text-color;
 			}
 		}
 
@@ -226,13 +231,13 @@ nav {
 
 		img {
 			width: 20%;
-			padding-top: 5%;
+			margin-top: 5%;
 			animation: arrow 2s infinite;
 
 			@keyframes arrow {
-				0% { padding-top: 5%; }
-				50% { padding-top: 10%; }
-				100% { padding-top: 5%; }
+				0% { margin-top: 5%; }
+				50% { margin-top: 10%; }
+				100% { margin-top: 5%; }
 			}
 		}
 
