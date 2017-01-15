@@ -38,8 +38,8 @@ blowawish.service('CanBlow', function(){
                     $scope.closeWishEnter = true;
                     $scope.wishName = data.data[1];
                     $scope.wishText = data.data[2];
-                    CanBlow.setBool(true);
 
+                    CanBlow.setBool(true);
                     $scope.postToInsta();
                 }else if(data.data[0] == 'error'){
                     $scope.wishError = true;
