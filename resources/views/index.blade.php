@@ -29,15 +29,15 @@
 	<div class="container">
 		<div class="steps">
 			<div class="wishit">
-				<img src="{{ asset('images/tekstballon.png') }}" alt="">
+				<img src="{{ asset('images/tekstballon.png') }}" alt="Een icoon voor de stap 'Wish It'">
 				<p>Wish it</p>
 			</div>
 			<div class="blowit">
-				<img src="{{ asset('images/wind.png') }}" alt="">
+				<img src="{{ asset('images/wind.png') }}" alt="Een icoon voor de stap 'Blow It'">
 				<p>Blow it</p>
 			</div>
 			<div class="instait">
-				<img src="{{ asset('images/insta.png') }}" alt="">
+				<img src="{{ asset('images/insta.png') }}" alt="Een icoon voor de stap 'Insta It'">
 				<p>Insta it</p>
 			</div>
 		</div>
