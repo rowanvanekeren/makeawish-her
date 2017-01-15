@@ -1,4 +1,7 @@
-<div class="container">
+@include('layouts.wish')
+
+@section('content')
+<div class="container login-form">
     <div class="inner-container">
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
@@ -10,7 +13,7 @@
                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"  required autofocus placeholder="Naam">
 
                     @if ($errors->has('name'))
-                    <span class="help-block">
+                    <span class="help">
                         <strong>{{ $errors->first('name') }}</strong>
                     </span>
                     @endif
@@ -47,3 +50,5 @@
         </form>
     </div>  
 </div>
+
+    @endsection

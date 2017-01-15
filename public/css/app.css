@@ -373,4 +373,9 @@ nav img {
   font-family: SlimJoe;
 }
 
+.login-form {
+  margin: 0 auto;
+  z-index: 50;
+}
+
 /*# sourceMappingURL=app.css.map */
