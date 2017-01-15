@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Cookie;
 use App\Http\Helpers\Auth_Errors;
+use Illuminate\Support\Facades\Validator;
 class MicController extends Controller
 {
     public function calibration(){
@@ -18,14 +19,25 @@ class MicController extends Controller
     }
 
     public function savePreset(Request $request){
-        $preset = new MicPreset([
-            'name' => $request->preset_name,
-            'max' => $request->preset_number
+        $validator = Validator::make($request->all(), [
+            'preset_name' => 'required',
+            'preset_number' => 'required',
+
         ]);
+        if ($validator->fails()) {
+            return redirect('calibration')
+                ->withErrors($validator)
+                ->withInput();
+        }else {
+            $preset = new MicPreset([
+                'name' => $request->preset_name,
+                'max' => $request->preset_number
+            ]);
 
-        $preset->save();
+            $preset->save();
 
-        return redirect('calibration');
+            return redirect('calibration');
+        }
     }
 
     public function deletePreset(Request $request){
