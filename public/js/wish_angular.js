@@ -225,6 +225,9 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
             }
         });
     };
+    $scope.redirectToEnd = function(){
+        window.location = "./end/" + $scope.wishName + '/' + $scope.wishText;
+    };
     $scope.activatePusher = function () {
         var req = {
             method: 'POST',
@@ -299,6 +302,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                             console.log('pusher activated');
                             $scope.activatePusher();
                             $scope.wishSend = true;
+                            $scope.redirectToEnd();
                         }
 
                     }

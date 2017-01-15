@@ -11,7 +11,9 @@ class WishController extends Controller
         $wishes = Wish::paginate(4);
         return view('overview', ['wishes' => $wishes]);
     }
-
+    public function getEndPage($name = 'no name', $text = 'no wish') {
+        return view('end',['wishName' => $name, 'wishText' => $text]);
+    }
     public function getBlowAWishPage(){
         return view('wish');
     }

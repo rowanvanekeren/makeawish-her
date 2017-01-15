@@ -22,7 +22,7 @@ Route::get('/overview', 'WishController@getWishes');
 Route::get('/wish', 'WishController@getBlowAWishPage');
 Route::get('/insta', 'InstaController@getInstaPage');
 
-Route::get('/end', 'HomeController@end');
+Route::get('/end/{name}/{wish}', 'WishController@getEndPage');
 
 Route::post('/save_wish', 'WishController@saveWish');
 Route::post('/pusher', 'PusherController@pushWish');
