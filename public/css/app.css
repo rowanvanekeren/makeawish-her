@@ -229,6 +229,8 @@ nav img {
 .container .wish-blow img {
   width: 20%;
   margin-top: 5%;
+  -webkit-animation: arrow 2s infinite;
+  animation: arrow 2s infinite;
 }
 
 @-webkit-keyframes arrow {
@@ -260,6 +262,7 @@ nav img {
   font-size: 4em;
   color: white;
   text-align: center;
+  margin-bottom: 150px;
 }
 
 .container .wish-blow .blowdiv {
