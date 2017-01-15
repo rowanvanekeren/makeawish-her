@@ -237,6 +237,8 @@ nav {
 		img {
 			width: 20%;
 			margin-top: 5%;
+			animation: arrow 2s infinite;
+
 			@keyframes arrow {
 				0% { margin-top: 5%; }
 				50% { margin-top: 10%; }
@@ -249,6 +251,7 @@ nav {
 			font-size: 4em;
 			color: white;
 			text-align: center;
+			margin-bottom: 150px;
 		}
 
 		.blowdiv{
@@ -349,7 +352,7 @@ nav {
 
 		font-family: arial, sans-serif;
 
-		margin-top: 145px;
+		margin-top: 135px;
 
 		h1 {
 			word-wrap: break-word;
