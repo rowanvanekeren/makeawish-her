@@ -21,7 +21,7 @@
         ]); ?>
     </script>
 </head>
-<body ng-app="blowawish">
+<body ng-app="blowawish" style="background-image: url({{asset('images/background.jpg')}})">
 	<nav>
 		<img src="{{ asset('images/logo.png') }}" alt="Het logo van InstaWish">
 	</nav>

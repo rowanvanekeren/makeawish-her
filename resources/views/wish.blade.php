@@ -7,7 +7,7 @@ $preset_error = $general_errors->general_errors('cookiePreset');
 ?>
 <div ng-controller="wishAngController" class="container">
     <div class="wish-enter" ng-hide="closeWishEnter">
-        <form ng-submit="submitWish()"  style="background-image: url({{asset('images/tekstballon-2.png')}})">
+        <form ng-submit="submitWish()" style="background-image: url({{asset('images/tekstballon-2.png')}})">
             {{ csrf_field() }}
 
             <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80" required>
