@@ -123,7 +123,7 @@ nav {
 			background-size: 80%;
 			background-position: center;
 
-			width: 80%;
+			width: 70%;
 			height: 40%;	
 
 			display: flex;
@@ -163,7 +163,7 @@ nav {
 			.button-wish {
 				position: absolute;
 				
-				top: 50%;
+				top: 35%;
 				right: 10%;
 
 				width: 20%;
@@ -185,29 +185,28 @@ nav {
 			justify-content: space-around;
 			align-items: center;
 
-			width: 500px !important;
-			height: 500px !important;
+			width: 400px !important;
+			height: 400px !important;
 			overflow:hidden;
 			background-size: cover;
 			background-position: center;
 			background-repeat: no-repeat;
 			color: white;
-			padding: 60px;
 			z-index: -50;
-			top: 50%;
 
 			font-family: arial, sans-serif;
 
 			h1 {
 				word-wrap: break-word;
-				text-shadow: 2px 2px #292728 !important;
-				padding-top: 15px;
+				width: 80%;
+				text-align: center;
+				font-family: $fontBig;
 			}
 
 			h3 {
-				text-shadow: 2px 2px #292728;
 				text-align: right;
-				width: 100%;
+				width: 80%;
+				font-family: $fontSmall;
 			}
 		}
 	}
@@ -223,7 +222,6 @@ nav {
 		justify-content: space-between;
 		align-items: center;
 		padding-top: 5%;
-		padding-bottom: 20%;
 		animation: arrow 2s infinite;
 
 		@keyframes arrow {
@@ -238,8 +236,9 @@ nav {
 
 		.text {
 			font-family: $fontBig;
-			font-size: 7em;
+			font-size: 4em;
 			color: $primary-text-color;
+			text-align: center;
 		}
 
 		.blowdiv{
@@ -249,7 +248,7 @@ nav {
 			z-index: 10;
 			margin-top: 0;
 			left: 50%;
-			top: 27%;
+			top: 30%;
 			opacity: 1;
 			transition: 1s;
 
@@ -318,7 +317,6 @@ nav {
 			background-position: center;
 			background-repeat: no-repeat;
 			color: white;
-			padding: 60px;
 			z-index: -50;
 			top: 50%;
 

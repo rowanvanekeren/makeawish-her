@@ -9,8 +9,8 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     <div class="wish-enter" ng-hide="closeWishEnter">
         <form ng-submit="submitWish()"  style="background-image: url({{asset('images/tekstballon-2.png')}})">
             {{ csrf_field() }}
-            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off">
-            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off">
+            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80">
+            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20">
             
             @if ($errors->has('wish'))
             <span class="help-block">
@@ -23,8 +23,12 @@ $preset_error = $general_errors->general_errors('cookiePreset');
 
         <!-- Als insta post niet meer werkt, deze div terug buiten wish-enter zetten -->
         <div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
-            <h1>"@{{ wishFormWish }}"</h1>
-            <h3>-@{{ wishFormName }}</h3>
+            <h1>
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    @{{ wishFormWish }}
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+            </h1>
+            <h3>@{{ wishFormName }}</h3>
         </div>
     </div>
 
