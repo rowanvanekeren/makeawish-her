@@ -307,6 +307,18 @@ nav {
   align-items: center;
 }
 
+.container .wish-end .insta-layout {
+  background-image: url("../images/instalayout.png");
+  z-index: 0;
+  width: 400px;
+  height: 70%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  background-size: contain;
+}
+
 .container .wish-end .text {
   font-family: BigJohn;
   font-size: 4em;

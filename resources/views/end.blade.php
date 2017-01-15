@@ -28,18 +28,20 @@
 
 			<!-- DIT MOET ALS LAATSTE KOMEN IN WISH.BLADE.PHP -->
 			<div class="wish-end">
-				<div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
-					<h1>
-						<i class="fa fa-quote-left" aria-hidden="true"></i>
-						@{{ wishFormWish }}
-						<i class="fa fa-quote-right" aria-hidden="true"></i>
-					</h1>
-					<h3>@{{ wishFormName }}</h3>
+				<div class="insta-layout">
+					<div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
+						<h1>
+							<i class="fa fa-quote-left" aria-hidden="true"></i>
+							@{{ wishFormWish }}
+							<i class="fa fa-quote-right" aria-hidden="true"></i>
+						</h1>
+						<h3>@{{ wishFormName }}</h3>
+					</div>
 				</div>
 
 				<div class="text">
 					See it on Insta!
-					
+
 				</div>
 			</div>
 
