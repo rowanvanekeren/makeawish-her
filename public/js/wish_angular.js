@@ -111,7 +111,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
             console.log('test');
             $scope.blowingEnabled = true;
             $(blowOverlayClass).fadeIn();
-            $scope.wishSend = true;
+
             $(wishEndClass).fadeIn(3000);
             canBlow = true;
 
@@ -298,6 +298,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                             pushEnabled = true;
                             console.log('pusher activated');
                             $scope.activatePusher();
+                            $scope.wishSend = true;
                         }
 
                     }

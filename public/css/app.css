@@ -117,7 +117,7 @@ nav {
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center;
-  width: 80%;
+  width: 70%;
   height: 40%;
   display: -webkit-box;
   display: flex;
@@ -156,7 +156,7 @@ nav {
 
 .container .wish-enter form .button-wish {
   position: absolute;
-  top: 50%;
+  top: 35%;
   right: 10%;
   width: 20%;
   height: 40px;
@@ -177,29 +177,28 @@ nav {
   justify-content: space-around;
   -webkit-box-align: center;
   align-items: center;
-  width: 500px !important;
-  height: 500px !important;
+  width: 400px !important;
+  height: 400px !important;
   overflow: hidden;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  padding: 60px;
   z-index: -50;
-  top: 50%;
   font-family: arial, sans-serif;
 }
 
 .container .wish-enter .instaWish h1 {
   word-wrap: break-word;
-  text-shadow: 2px 2px #292728 !important;
-  padding-top: 15px;
+  width: 80%;
+  text-align: center;
+  font-family: BigJohn;
 }
 
 .container .wish-enter .instaWish h3 {
-  text-shadow: 2px 2px #292728;
   text-align: right;
-  width: 100%;
+  width: 80%;
+  font-family: SlimJoe;
 }
 
 .container .wish-blow {
@@ -215,7 +214,6 @@ nav {
   -webkit-box-align: center;
   align-items: center;
   padding-top: 5%;
-  padding-bottom: 20%;
   -webkit-animation: arrow 2s infinite;
   animation: arrow 2s infinite;
 }
@@ -250,8 +248,9 @@ nav {
 
 .container .wish-blow .text {
   font-family: BigJohn;
-  font-size: 7em;
+  font-size: 4em;
   color: #243477;
+  text-align: center;
 }
 
 .container .wish-blow .blowdiv {
@@ -261,7 +260,7 @@ nav {
   z-index: 10;
   margin-top: 0;
   left: 50%;
-  top: 27%;
+  top: 30%;
   opacity: 1;
   -webkit-transition: 1s;
   transition: 1s;
@@ -333,7 +332,6 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
   color: white;
-  padding: 60px;
   z-index: -50;
   top: 50%;
   font-family: arial, sans-serif;

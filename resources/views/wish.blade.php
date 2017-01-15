@@ -9,8 +9,10 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     <div class="wish-enter" ng-hide="closeWishEnter">
         <form ng-submit="submitWish()"  style="background-image: url({{asset('images/tekstballon-2.png')}})">
             {{ csrf_field() }}
-            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off">
-            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" >
+
+            <input type="text" id="wish" type="text" class="form-control" name="wish" ng-model="wishFormWish" value="{{ old('wish') }}" autofocus placeholder="Type your wish here..." autocomplete="off" maxlength="80">
+            <input id="name" type="text" class="form-control" name="name" ng-model="wishFormName" value="{{ old('name') }}" placeholder="Naam" autocomplete="off" maxlength="20">
+
             
             @if ($errors->has('wish'))
             <span class="help-block">
@@ -23,8 +25,12 @@ $preset_error = $general_errors->general_errors('cookiePreset');
 
         <!-- Als insta post niet meer werkt, deze div terug buiten wish-enter zetten -->
         <div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
-            <h1>"@{{ wishFormWish }}"</h1>
-            <h3>-@{{ wishFormName }}</h3>
+            <h1>
+                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    @{{ wishFormWish }}
+                <i class="fa fa-quote-right" aria-hidden="true"></i>
+            </h1>
+            <h3>@{{ wishFormName }}</h3>
         </div>
     </div>
 
@@ -85,7 +91,7 @@ $preset_error = $general_errors->general_errors('cookiePreset');
     --}}
 
     <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
-        <img src="/images/upload-2.svg" alt="">
+        <img src="../images/upload-2.svg" alt=""  ng-hide="wishSend">
         <div class="blowdiv">
             <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon-2.png')}} )">
                 <h2>@{{ wishText }}</h2>
@@ -93,24 +99,34 @@ $preset_error = $general_errors->general_errors('cookiePreset');
             </div>
         </div>
 
-        <div class="text">
+        <div class="text" ng-hide="wishSend">
             <p>Now blow it away!</p>
         </div>
+        <style>
+            .wish-end{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 20;
+            }
+        </style>
+        <div class="wish-end"  ng-show="wishSend">
+            <div>
+                <p>
+                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                    Those who dream by day are cognizant of many things which escape those who dream only by night.
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </p>
+                <span>- Edgar Allan Poe, Eleonora</span>
+            </div>
+        </div>
 
-        <!--
-        <div class="wish-end" ng-show="wishSend">
-            <p>
-                <i class="fa fa-quote-left" aria-hidden="true"></i>
-                Those who dream by day are cognizant of many things which escape those who dream only by night.
-                <i class="fa fa-quote-right" aria-hidden="true"></i>
-            </p>
-            <span>- Edgar Allan Poe, Eleonora</span>
-        </div >
-        -->
+
         <div ng-show="cookieError">
             <div class="error">{{$preset_error}}</div>
             <a href="./calibration">Choose preset</a>
         </div>
-    </div>   
+    </div>
+
 </div>
 @endsection
