@@ -44,6 +44,7 @@ nav {
 	justify-content: center;
 	align-items: center;
 
+	padding-top: 5%;
 	padding-bottom: 5%;
 
 	img {
@@ -248,7 +249,7 @@ nav {
 		.text {
 			font-family: $fontBig;
 			font-size: 4em;
-			color: $primary-text-color;
+			color: white;
 			text-align: center;
 		}
 
@@ -323,10 +324,12 @@ nav {
 	}
 
 	.text {
-		font-family: $fontBig;
-		font-size: 4em;
-		text-align: center;
-		color: $primary-text-color;
+		p {
+			font-family: $fontBig;
+			font-size: 4em;
+			text-align: center;
+			color: white;
+		}
 	}
 
 	.instaWish {

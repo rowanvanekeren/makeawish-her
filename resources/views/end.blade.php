@@ -21,7 +21,7 @@
 			]); ?>
 		</script>
 	</head>
-	<body ng-app="blowawish">
+	<body ng-app="blowawish" style="background-image: url({{asset('images/background.jpg')}})">>
 
 		<div class="container">
 
@@ -42,8 +42,7 @@
 				</div>
 
 				<div class="text">
-					See it on Insta!
-
+					<p>See it on Insta!</p>
 				</div>
 			</div>
 
