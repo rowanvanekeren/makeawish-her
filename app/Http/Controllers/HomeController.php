@@ -31,5 +31,7 @@ class HomeController extends Controller
 
     }
 
-
+    public function end() {
+        return view('end');
+    }
 }
