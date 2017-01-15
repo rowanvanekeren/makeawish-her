@@ -237,8 +237,6 @@ nav {
 		img {
 			width: 20%;
 			margin-top: 5%;
-			animation: arrow 2s infinite;
-
 			@keyframes arrow {
 				0% { margin-top: 5%; }
 				50% { margin-top: 10%; }
@@ -267,7 +265,8 @@ nav {
 			.blowdiv-inner {
 				position:relative;
 				background-repeat: no-repeat;
-				background-size: cover;
+				background-size: 80%;
+				background-position: center;
 				height: 100%;
 				width: 100%;
 				left: -50%;
@@ -350,7 +349,7 @@ nav {
 
 		font-family: arial, sans-serif;
 
-		margin-top: 155px;
+		margin-top: 145px;
 
 		h1 {
 			word-wrap: break-word;
