@@ -1,6 +1,150 @@
+///////////////////////////////////////////////////
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+    showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    if (n > x.length) {
+        slideIndex = 1
+    }
+    if (n < 1) {
+        slideIndex = x.length
+    }
+    ;
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    x[slideIndex - 1].style.display = "block";
+}
+
+$('#insta_image').click(function(){
+
+    html2canvas($("#insta_image"), {
+    height: $('.polaroid-big').css('height').replace(/[^-\d\.]/g, ''),
+   /*width: $('.polaroid-big').css('width').replace(/[^-\d\.]/g, ''),*/
+        onrendered: function (canvas) {
+            theCanvas = canvas;
+
+            var data = theCanvas.toDataURL('image/jpeg');
+            window.open(data);
+        }
+
+    });
+});
+//////////////////////////////////////////////////////////
+var xpos;
+var ypos;
+//This method runs when your page is load.
+$(document).ready(function () {
+    // filter stuff
+    var prevImgClass = '.preview-img';
+    var wishTextClass = '#mainText';
+    var nameTextClass = '#footerText';
+    var arrowRight = '&#9654';
+    var arrowDown ='&#9660';
+    $('#main-text').draggable().resizable();
+    $('#footer-text').draggable().resizable();
+/*    $("#hueFilter").slider({
+        max: 360,
+        slide: function( event, ui ) {
+            console.log(ui.value);
+            $(prevImgClass).css('filter', 'hue-rotate('+ ui.value + 'deg)' );
+        }
+    });*/
+    $("#opacityFilter").slider({
+        max: 100,
+        value: 100,
+        slide: function( event, ui ) {
+            var opacity = ui.value / 100;
+            $(prevImgClass).css('opacity', opacity );
+        }
+    });
+    $("#nameTextBoldness").slider({
+        max: 1000,
+        step: 100,
+        slide: function( event, ui ) {
+
+           $(nameTextClass).css('font-weight', ui.value);
+        }
+    });
+    $("#wishTextBoldness").slider({
+        max: 1000,
+        step: 100,
+        slide: function( event, ui ) {
+
+            $(wishTextClass).css('font-weight', ui.value);
+        }
+    });
+
+    $("#wishTextSize").slider({
+        max: 100,
+        slide: function( event, ui ) {
+            $(wishTextClass).css('font-size', ui.value);
+        }
+    });
+    $("#nameTextSize").slider({
+        max: 100,
+        slide: function (event, ui) {
+            $(nameTextClass).css('font-size', ui.value);
+        }
+
+    } );
+
+    $('.options-wrapper-wish').click(function () {
+
+        if($('.options-content-wish').hasClass('hidden')){
+            $('.options-wrapper-wish span').html(arrowDown);
+        }else{
+            $('.options-wrapper-wish span').html(arrowRight);
+        }
+        $('.options-content-wish').toggleClass('hidden');
+    });
+    $('.options-wrapper-name').click(function () {
+
+        if($('.options-content-name').hasClass('hidden')){
+            $('.options-wrapper-name span').html(arrowDown);
+        }else{
+            $('.options-wrapper-name span').html(arrowRight);
+        }
+        $('.options-content-name').toggleClass('hidden');
+    });
+
+    $('#nameTextColor').change(function(){
+
+        $(nameTextClass).css('color', $('#nameTextColor').val());
+    })
+    $('#wishTextColor').change(function(){
+
+        $(wishTextClass).css('color', $('#wishTextColor').val());
+    })
+
+    $('#nameTextAlign').change(function(){
+        $(nameTextClass).css('text-align', $('#nameTextAlign').find(":selected").val());
+    });
+    $('#wishTextAlign').change(function(){
+        $(wishTextClass).css('text-align', $('#wishTextAlign').find(":selected").val());
+    });
+    $('#wishTextFont').change(function(){
+        $(wishTextClass).css('font-family', $('#wishTextFont').find(":selected").val());
+    });
+    $('#nameTextFont').change(function(){
+        $(nameTextClass).css('font-family', $('#nameTextFont').find(":selected").val());
+    });
+
+
+});
+particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+    console.log('callback - particles.js config loaded');
+});
+/////////////////////////////////////////////////////////
 var blowawish = angular.module("blowawish", []);
 
-blowawish.service('CanBlow', function(){
+blowawish.service('CanBlow', function () {
     var canBlow = {
         bool: false
     };
@@ -15,9 +159,128 @@ blowawish.service('CanBlow', function(){
     };
 });
 
-    blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
-        var wishConfirmClass = '.wish-confirm';
-        $scope.submitWish = function () {
+
+blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
+    var wishConfirmClass = '.wish-confirm';
+    $scope.dragWish = "voer je wens in";
+    $scope.dragName = "voer je naam in";
+    function triggerPolaroidAnimation() {
+        var animationClass = 'polaroid-taken';
+        var polaroidClass = '.polaroid';
+        if ($(polaroidClass).hasClass(animationClass)) {
+            $(polaroidClass).removeClass(animationClass);
+            $(polaroidClass).addClass(animationClass);
+        } else {
+            $(polaroidClass).addClass(animationClass);
+        }
+    }
+
+    $scope.projectInput = function (input) {
+        var selectedInput = input;
+        console.log(input);
+        if (input == 0) {
+            var wishInput = $scope.wishFormWish;
+            var WishOutput = $scope.dragWish;
+            $scope.dragWish = wishInput
+            $scope.$evalAsync();
+
+
+        } else if (input = 1) {
+            console.log($scope.wishFormName);
+            var nameInput = $scope.wishFormName;
+            var nameOutput = $scope.dragName;
+            $scope.dragName = nameInput;
+            $scope.$evalAsync();
+        }
+
+    };
+
+
+    $scope.backToSelect = function () {
+        $scope.previewConfirmationSection = false;
+        $scope.uploadImgSection = false;
+    };
+    $scope.proceedToWish = function () {
+        $scope.previewConfirmationSection = false;
+        $scope.uploadImgSection = true;
+        $scope.showImageEditScreen = true;
+    };
+    $scope.selectAlternativeImage = function (event) {
+        $scope.loading = true;
+
+        var imgSrc = event.currentTarget.src;
+        $('.preview-img').attr('src', imgSrc);
+        $('.preview-img').on('load', function () {
+            setTimeout(function () {
+                $scope.previewConfirmationSection = true;
+                $scope.uploadImgSection = true;
+
+                triggerPolaroidAnimation();
+                $scope.loading = false;
+                $scope.$apply();
+            }, 200);
+
+        });
+    };
+    $scope.selectImage = function () {
+        console.log('clicked');
+        var imgInput = '#upload-image';
+        $(imgInput).click();
+        $(imgInput).change(function () {
+
+            var file = this.files[0];
+            var imagefile = file.type;
+            var match = ["image/jpeg", "image/png", "image/jpg"];
+            if (!((imagefile == match[0]) || (imagefile == match[1]) || (imagefile == match[2]))) {
+                //no match
+                console.log('no match');
+            } else {
+                console.log('match');
+                var form_data = new FormData(); // Creating object of FormData class
+                form_data.append("image", file);// Appending parameter named file with properties of file_field to form_data
+                $scope.loading = true;
+                $scope.$apply();
+                postFileImg(form_data);
+            }
+
+        });
+    };
+
+    function postFileImg(form_data) {
+
+        $.ajax({
+            type: 'POST',
+            processData: false, // important
+            contentType: false, // important
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data: form_data,
+            url: './save_image',
+            dataType: 'json',
+            // in PHP you can call and process file in the same way as if it was submitted from a form:
+            // $_FILES['input_file_name']
+            success: function (jsonData) {
+                console.log('testte');
+                $('.preview-img').attr('src', jsonData);
+                $('.preview-img').on('load', function () {
+                    setTimeout(function () {
+                        $scope.previewConfirmationSection = true;
+                        $scope.uploadImgSection = true;
+                        $scope.$apply();
+                        triggerPolaroidAnimation();
+                        $scope.loading = false;
+                    }, 200);
+
+                });
+
+
+            }
+
+        });
+    }
+
+    $scope.submitWish = function () {
         var req = {
             method: 'POST',
             url: './save_wish',
@@ -34,14 +297,14 @@ blowawish.service('CanBlow', function(){
         $http(req).then(function (data) {
 
                 console.log(data.data);
-                if(data.data[0] == 'succes'){
+                if (data.data[0] == 'succes') {
                     $scope.closeWishEnter = true;
                     $scope.wishName = data.data[1];
                     $scope.wishText = data.data[2];
 
                     CanBlow.setBool(true);
                     $scope.postToInsta();
-                }else if(data.data[0] == 'error'){
+                } else if (data.data[0] == 'error') {
                     $scope.wishError = true;
                     $scope.wishErrorText = data.data[1];
                 }
@@ -52,30 +315,52 @@ blowawish.service('CanBlow', function(){
 
 
     };
-        $scope.postToInsta = function(){
 
-                html2canvas($("#insta_image"), {
-                    onrendered: function(canvas) {
-                        theCanvas = canvas;
-                        /* document.body.appendChild(canvas);*/
-                        var data = theCanvas.toDataURL('image/jpeg');
-                        $http.post('./saveInstaImage',{
+    $scope.toggleWishWindow = function () {
+        $scope.previewConfirmationSection = false;
+        $scope.uploadImgSection = true;
+        $scope.showImageEditScreen = false;
+        $scope.stepSection = true;
+    };
 
-                            image: data
+    $scope.postToInsta = function () {
 
-                        }).then(function(data){
-                            console.log(data.data)
-                        });
-                        // Convert and download as image
-                        /* Canvas2Image.saveAsPNG(canvas);*/
-                       /* $(".test_image").append(canvas);*/
+        $scope.toggleWishWindow();
+        particlesJS.load('particles-js', 'particlesjs-config-up.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+        pJSDom[0]["pJS"]['particles']['move']['speed'] = 40;
+        $('#insta_image').css('margin-top', '0');
+        $('#insta_image').css('margin-bottom', '0');
+        $('#main-text').css('border', 'none');
+        $('#footer-text').css('border', 'none');
+        $('.ui-icon').css('display', 'none');
 
-                        // Clean up
-                        //document.body.removeChild(canvas);
-                    }
+        html2canvas($("#insta_image"), {
+            height: $('.polaroid-big').css('height').replace(/[^-\d\.]/g, ''),
+            onrendered: function (canvas) {
+                theCanvas = canvas;
+                /* document.body.appendChild(canvas);*/
+                var data = theCanvas.toDataURL('image/jpeg');
+                $http.post('./saveInstaImage', {
 
-            });
-        };
+                    image: data
+
+                }).then(function (data) {
+                   if(data.data != null){
+                       $scope.savedImage = data.data;
+                   }
+                });
+                // Convert and download as image
+                /* Canvas2Image.saveAsPNG(canvas);*/
+                /* $(".test_image").append(canvas);*/
+
+                // Clean up
+                //document.body.removeChild(canvas);
+            }
+
+        });
+    };
 });
 
 blowawish.controller("InstaAngController", function ($scope, $http, CanBlow) {
@@ -107,7 +392,10 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
     var canBlow = false;
 
-    $scope.$watch(function () { return CanBlow.getBool(); }, function (newValue, oldValue) {
+    $scope.$watch(function () {
+        return CanBlow.getBool();
+    }, function (newValue, oldValue) {
+
         if (newValue !== oldValue) {
             console.log('test');
             $scope.blowingEnabled = true;
@@ -118,7 +406,6 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
         }
     });
-
 
 
     $scope.initWish = function () {
@@ -133,30 +420,30 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                     countTryStream++;
 
                     setTimeout(function () {
-                        if(!cookieIsSet && !streamOpen){
+                        if (!cookieIsSet && !streamOpen) {
                             console.log('retry stream and init cookie');
                             openStream();
                             checkStatus();
-                        }else if(!cookieIsSet && streamOpen){
+                        } else if (!cookieIsSet && streamOpen) {
                             console.log('retry init cookie');
                             checkStatus();
-                        }else if(!streamOpen && cookieIsSet){
+                        } else if (!streamOpen && cookieIsSet) {
                             console.log('retry stream');
                             openStream();
                             checkStatus();
                         }
                     }, 100);
                 } else {
-                    if(!cookieIsSet && !streamOpen){
+                    if (!cookieIsSet && !streamOpen) {
                         console.log('init cookie and stream failed');
                         $scope.cookieError = true;
 
-                    }else if(!cookieIsSet && streamOpen){
+                    } else if (!cookieIsSet && streamOpen) {
                         console.log('init cookie failed');
                         $scope.cookieError = true;
 
 
-                    }else if(!streamOpen && cookieIsSet){
+                    } else if (!streamOpen && cookieIsSet) {
                         console.log('opening stream failed');
                     }
                 }
@@ -226,7 +513,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
             }
         });
     };
-    $scope.redirectToEnd = function(){
+    $scope.redirectToEnd = function () {
         window.location = "./end/" + $scope.wishName + '/' + $scope.wishText;
     };
     $scope.activatePusher = function () {
@@ -290,6 +577,10 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
                     var average = values / length;
                     globalAverage = average;
+                    console.log(globalAverage);
+                    if(Math.floor(globalAverage) > 20){
+                        pJSDom[1]["pJS"]['particles']['move']['speed'] = Math.floor(globalAverage) / 5;
+                    }
 
                     $(blowOverlayClass).css('margin-top', marginCounter + "%");
                     /*   console.log(globalAverage);
@@ -299,11 +590,13 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                         console.log('blow counter working');
                         marginCounter = marginCounter - blowSpeed;
                         if (marginCounter < counterEnd) {
-                            pushEnabled = true;
+                        /*    pushEnabled = true;
                             console.log('pusher activated');
                             $scope.activatePusher();
                             $scope.wishSend = true;
-                            $scope.redirectToEnd();
+                            $scope.redirectToEnd();*/
+
+                            // wel weer aanzetten!!!!!!
                         }
 
                     }

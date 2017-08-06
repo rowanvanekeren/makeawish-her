@@ -17,10 +17,10 @@ class InstaController extends Controller
        $path = base_path() . "/public/images/insta/". $img ;
 /*        $path = base_path() . "/public/images/insta/testinsta.jpg";*/
 
-        $caption = 'Weer een wens via InstaWish, doe zelf een wens op https://zondaginantwerpen.be !';
+        $caption = 'Weer een wens via #InstaWish! ';
         require("../vendor/autoload.php");
         $instagram = new \Instagram\Instagram();
-        $instagram->login("instablowawish", "blowblowitaway");
+        $instagram->login("instablowawish", "blowyourhearthout");
         $instagram->postPhoto($path, $caption);
     }
     public function saveInstaImage(Request $request){
@@ -35,10 +35,10 @@ class InstaController extends Controller
         $success = file_put_contents($file, $data);
         if($success){
 
-          $save =  $this->postInsta($unique_code);
+        /*  $save =  $this->postInsta($unique_code);*/
             return $unique_code;
         }else{
-            return 'error';
+            return null;
         }
     }
 }
