@@ -1,64 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.wish')
 
-	<!-- CSRF Token -->
-	<meta name="csrf-token" content="{{ csrf_token() }}">
+@section('content')
 
-	<title>{{ config('app.name', 'Blow a Wish') }}</title>
+    <div class="container-fluid">
 
-	<!-- Styles -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link href="{{asset('css/app.css')}}" rel="stylesheet">
+        <!-- DIT MOET ALS LAATSTE KOMEN IN WISH.BLADE.PHP -->
+        <div class="col-md-12">
 
-	<!-- Scripts -->
-	<script>
-		window.Laravel = <?php echo json_encode([
-			'csrfToken' => csrf_token(),
-			]); ?>
-		</script>
-	</head>
-	<body ng-app="blowawish" style="background-image: url({{asset('images/background.jpg')}})">>
+            <div class="col-md-6 col-md-offset-3 end-wrapper">
+                <div class="text">
+                    <p>See it on Insta!</p>
+                </div>
 
-		<div class="container">
+                <!-- LightWidget WIDGET -->
+                <div class="title-custom">
+                <div class='embedsocial-instagram' data-ref="a5e1041473528a803f7358796d9525ac932840cf" style="color:white !important;">
 
+                </div>
+                </div>
+                <script>(function (d, s, id) {
+                        var js;
+                        if (d.getElementById(id)) {
+                            return;
+                        }
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://embedsocial.com/embedscript/in.js";
+                        d.getElementsByTagName("head")[0].appendChild(js);
+                    }(document, "script", "EmbedSocialInstagramScript"));</script>
 
-			<!-- DIT MOET ALS LAATSTE KOMEN IN WISH.BLADE.PHP -->
-			<div class="wish-end">
-
-				<div class="insta-layout">
-					<div id='insta_image' class="instaWish" style="background-image: url({{asset('images/insta-bg/'. rand(1, 5) . '.jpg')}})">
-						<h1>
-							<i class="fa fa-quote-left" aria-hidden="true"></i>
-							{{ $wishText }}
-							<i class="fa fa-quote-right" aria-hidden="true"></i>
-						</h1>
-						<h3>{{ $wishName }}</h3>
-					</div>
-
-				</div>
-
-				<div class="text">
-					<p>See it on Insta!</p>
-				</div>
-			</div>
+            </div>
 
 
+        </div>
 
 
+    </div>
 
-		</div>
-
-
-		<!-- Scripts -->
-		<script src="{{url('/js/jquery-3.1.1.min.js')}}"></script>
-		<script src="{{url('/js/angular.min.js')}}"></script>
-		<script src="{{url('/js/wish_angular.js')}}"></script>
-
-		@yield('scripts')
-		<script src="{{asset('js/app.js')}}"></script>
-	</body>
-	</html>
+@endsection

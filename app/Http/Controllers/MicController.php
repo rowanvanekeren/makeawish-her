@@ -12,7 +12,7 @@ class MicController extends Controller
 {
     public function calibration(){
 
-        $presets = MicPreset::paginate(10);
+        $presets = MicPreset::all();
 
 
         return view('calibration', ['presets' => $presets, 'currCookie' => $this->getCurrentCookie()]);
@@ -24,6 +24,8 @@ class MicController extends Controller
             'preset_number' => 'required',
 
         ]);
+
+
         if ($validator->fails()) {
             return redirect('calibration')
                 ->withErrors($validator)

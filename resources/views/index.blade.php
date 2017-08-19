@@ -12,7 +12,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+	<link href="{{ asset('public/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{asset('public/css/app.css')}}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -21,39 +22,55 @@
         ]); ?>
     </script>
 </head>
-<body ng-app="blowawish" style="background-image: url({{asset('images/background.jpg')}})">
-	<nav>
-		<img src="{{ asset('images/logo.png') }}" alt="Het logo van InstaWish">
-	</nav>
+<body ng-app="blowawish">
 
-	<div class="container">
-		<div class="steps">
-			<div class="wishit">
-				<img src="{{ asset('images/tekstballon.png') }}" alt="Een icoon voor de stap 'Wish It'">
-				<p>Wish it</p>
-			</div>
-			<div class="blowit">
-				<img src="{{ asset('images/wind.png') }}" alt="Een icoon voor de stap 'Blow It'">
-				<p>Blow it</p>
-			</div>
-			<div class="instait">
-				<img src="{{ asset('images/insta.png') }}" alt="Een icoon voor de stap 'Insta It'">
-				<p>Insta it</p>
-			</div>
+	<div class="container-fluid">
+		<div class="row home-img-wrapper" style="background-image: url({{asset('public/images/background/dream.jpg')}});">
+			<h1>Deel jouw droom, wens of inspiratievolle tekst met de wereld</h1>
+            <a href="./wish">Deel je droom!</a>
 		</div>
 
-		<div class="button-container">
-			<a href="{{ url('/wish') }}">Let's wish!</a>
-		</div>
+        <div class="row steps" ng-hide="stepSection">
+            <div class="col-md-6 col-md-offset-3 step-wrapper home-steps">
+                <div class="step-section">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Kies foto</div>
+                </div>
+
+                <div class="step-section">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Bewerk foto</div>
+                </div>
+                <div class="step-section">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Verzend!</div>
+                </div>
+            </div>
+        </div>
+        <div class="row index-images-title">
+            <h2> Laatste Wensen </h2>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-12 index-images-wrapper">
+                @if(isset($wishes))
+                @foreach($wishes as $wish)
+                <div class="col-md-4 index-image">
+                <img class="overview-img" src="{{ asset('public/images/insta/' . $wish->image) }}" />
+                </div>
+                @endforeach
+                @endif
+                </div>
+            </div>
+
+        </div>
 	</div>
 
 
     <!-- Scripts -->
-    <script src="{{url('/js/jquery-3.1.1.min.js')}}"></script>
-	<script src="{{url('/js/angular.min.js')}}"></script>
-	<script src="{{url('/js/wish_angular.js')}}"></script>
+    <script src="{{url('public/js/jquery-3.1.1.min.js')}}"></script>
 
-		@yield('scripts')
-    <script src="{{asset('js/app.js')}}"></script>
+	@yield('scripts')
+    <script src="{{asset('public/js/app.js')}}"></script>
 </body>
 </html>

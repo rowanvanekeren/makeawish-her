@@ -18,6 +18,7 @@ class Wish extends Migration
             $table->string('email')->nullable()->unique();
             $table->string('name');
             $table->string('wish');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

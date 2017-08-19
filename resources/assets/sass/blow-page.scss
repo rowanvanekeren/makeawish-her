@@ -1,0 +1,16 @@
+.fastCorrection{
+  z-index: 10;
+  transition: 0s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.endImage{
+  transition: 0.2s;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

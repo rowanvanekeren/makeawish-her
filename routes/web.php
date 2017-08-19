@@ -25,6 +25,7 @@ Route::get('/insta', 'InstaController@getInstaPage');
 Route::get('/end/{name}/{wish}', 'WishController@getEndPage');
 
 Route::post('/save_wish', 'WishController@saveWish');
+Route::post('/update_wish', 'WishController@updateWishImage');
 Route::post('/save_image', 'WishController@saveImage');
 Route::post('/pusher', 'PusherController@pushWish');
 Route::post('/savepreset', 'MicController@savePreset');

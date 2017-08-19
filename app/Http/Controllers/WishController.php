@@ -16,7 +16,7 @@ class WishController extends Controller
         return view('end',['wishName' => $name, 'wishText' => $text]);
     }
     public function getBlowAWishPage(){
-        $dirname = "images/insta-bg/";
+        $dirname = "public/images/insta-bg/";
         $images =glob($dirname."*.{jpg,png,jpeg}", GLOB_BRACE);
 
 
@@ -33,23 +33,38 @@ class WishController extends Controller
         $unique_code=  "insta-" . uniqid() . '.jpg';
         $file = $destinationPath . $unique_code;
         $success = $img->move($destinationPath, $file);
-        return json_encode($relativeFolder . $unique_code);
+        /*dd($success);*/
+        return json_encode($imgFolder . $unique_code);
     }
     public function saveWish(Request $request){
+
         if(isset($request->name) && isset($request->wish)){
        $wish = new Wish(
             [
                 'name' => $request->name,
-                'wish' => $request->wish
+                'wish' => $request->wish,
+                /*'image' => $request->image*/
             ]
         );
 
         $wish->save();
-            return(['succes' , $request->name, $request->wish]);
+            return(['succes' , $request->name, $request->wish, $wish->id]);
         }else{
             return(['error' , 'Alle velden moeten ingevuld worden!']);
         }
 
+
+    }
+
+    public function updateWishImage(Request $request){
+        if(isset($request->id) && $request->image){
+            $wish = Wish::where('id',$request->id )->first();
+            $wish->image =  $request->image;
+            $wish->save();
+            return "1";
+        }else{
+            return "0";
+        }
 
     }
 }

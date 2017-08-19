@@ -5,8 +5,9 @@
     $general_errors = new \App\Http\Helpers\general_errors();
     $preset_error = $general_errors->general_errors('cookiePreset');
     ?>
-    <div ng-controller="wishAngController" class="container-fluid" >
-        <div id="particles-js"></div>
+
+    <div ng-controller="wishAngController" ng-init="initCarroussel()" class="container-fluid" >
+       <div id="particles-js"></div>
         <div class="row steps" ng-hide="stepSection">
             <div class="col-md-4 col-md-offset-4 step-wrapper">
                 <div class="step-section">
@@ -28,14 +29,21 @@
                 </div>
             </div>
         </div>
+        <div class="row ">
+            <div class="col-md-4 col-md-offset-4 cookieError" ng-show="cookieError" >
+                <div class="error">{{$preset_error}}</div>
+                <a class="btn-theme-1" href="./calibration">Choose preset</a>
+            </div>
+        </div>
         <div class="row default-margin" ng-hide="uploadImgSection" >
+
             <div class="col-md-6 col-md-offset-3">
                 <form enctype="multipart/form-data" id="upload_image_form" method="POST">
                     <input type="file" id="upload-image" name="upload_image"/>
 
                     <div class="center-wrapper">
                         <img id='take-picture-icon' class="take-picture-icon"
-                             src="{{ asset('images/icons/camera-icon.png') }}" ng-click="selectImage()"/>
+                             src="{{ asset('public/images/icons/camera-icon.png') }}" ng-click="selectImage()"/>
                     </div>
                 </form>
                 <div class="col-md-12">
@@ -45,19 +53,20 @@
                 </div>
                 <div class="loading-overlay" ng-show="loading">
                     <div>Loading...</div>
-                    <div><img src="images/icons/loader.gif"/></div>
+                    <div><img src="public/images/icons/loader.gif"/></div>
                 </div>
                 <div class="col-md-12">
                     <div class="slideShow">
-                        <button class="w3-button w3-display-left" onclick="plusDivs(-1)">&#10094;</button>
+                        <button class="w3-button w3-display-left" ng-click="plusDivs(-1)">&#10094;</button>
                         @if(isset($bg_images))
+
                             @foreach($bg_images as $key => $image)
 
                                 <img class="mySlides" src="{{$image}}" ng-click="selectAlternativeImage($event)">
 
                             @endforeach
                         @endif
-                        <button class="w3-button w3-display-right" onclick="plusDivs(+1)">&#10095;</button>
+                        <button class="w3-button w3-display-right" ng-click="plusDivs(+1)">&#10095;</button>
                     </div>
                 </div>
             </div>
@@ -234,32 +243,36 @@
 
                         <button type="submit" class="submit-wish">Verzend wens!</button>
                     </form>
+
                 </div>
             </div>
         </div>
-        <div class="" ng-show="closeWishEnter">
-
+        <div class="" ng-controller="wishAngController">
+            <div class="loading-overlay" ng-show="loadingToWish">
+                <div>Loading...</div>
+                <div><img src="public/images/icons/loader.gif"/></div>
+            </div>
         </div>
         <div class="row">
      {{--           <div class="col-md-12 foldImg" style="background-image: url('images/insta/insta-598636e9ee31f.jpg'); width: 500px; height: 500px; position: relative; left: 100px"ng-controller="wishAngController">
                     <img class="" src="images/insta/@{{ savedImage }}"/>
                 </div>--}}
         <div class="wish-blow" ng-controller="micStreamAngController" ng-init="initWish()" ng-show="blowingEnabled">
-            <img src="{{asset('/images/upload.png')}}" alt="Een pijl dat naar boven wijst." ng-hide="wishSend">
-
-            <div class="blowdiv">
+           {{-- <img src="{{asset('/images/upload.png')}}" alt="Een pijl dat naar boven wijst." ng-hide="wishSend">--}}
+            <img class="endImage" src="public/images/insta/@{{ savedImage }}"/>
+     {{--       <div class="blowdiv">
                 <div class="blowdiv-inner" style="background-image: url( {{asset('/images/tekstballon-2.png')}} )">
                     <h2>@{{ wishText }}</h2>
 
                     <p>@{{ wishName }}</p>
                 </div>
-            </div>
+            </div>--}}
 
             <div class="text" ng-hide="wishSend">
                 <p>Now blow it away!</p>
             </div>
 
-            <div ng-show="cookieError">
+            <div ng-show="cookieError" >
                 <div class="error">{{$preset_error}}</div>
                 <a href="./calibration">Choose preset</a>
             </div>

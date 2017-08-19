@@ -24,7 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $wishes = Wish::whereNotNull('image')->orderBy('created_at','desc')->take(15)->get();
+
+        return view('index', ['wishes' => $wishes]);
     }
 
     public function bridge() {

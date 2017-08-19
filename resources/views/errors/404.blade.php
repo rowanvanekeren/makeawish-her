@@ -1,11 +1,13 @@
-@extends('layouts.layout')
+@extends('layouts.wish')
 
 @section('content')
-    <div class="container">
-        <div class="inner-container" id="particles-js">
-        	<div class="pagenotfound">
-        		<p class="pagenotfoundtext">Zoveel sterren in de lucht en toch konden we deze niet vinden.</p>
-        	</div>
+    <div id="particles-js"> </div>
+    <div class="container-fluid">
+
+        <div class="col-md-12 notfound-page" >
+
+        		<p class="pagenotfoundtext">404 - Zoveel sterren in de lucht en toch konden we deze niet vinden.</p>
+
         <div>
     </div>
 @endsection

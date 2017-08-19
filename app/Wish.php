@@ -9,6 +9,6 @@ class Wish extends Model
     protected $table = "wish";
 
     protected $fillable = [
-        'name', 'wish', 'created_at','updated_at',
+        'name', 'wish', 'image' ,'created_at','updated_at',
     ];
 }

@@ -1,42 +1,5 @@
 ///////////////////////////////////////////////////
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-    showDivs(slideIndex += n);
-}
-
-function showDivs(n) {
-    var i;
-    var x = document.getElementsByClassName("mySlides");
-    if (n > x.length) {
-        slideIndex = 1
-    }
-    if (n < 1) {
-        slideIndex = x.length
-    }
-    ;
-    for (i = 0; i < x.length; i++) {
-        x[i].style.display = "none";
-    }
-    x[slideIndex - 1].style.display = "block";
-}
-
-$('#insta_image').click(function(){
-
-    html2canvas($("#insta_image"), {
-    height: $('.polaroid-big').css('height').replace(/[^-\d\.]/g, ''),
-   /*width: $('.polaroid-big').css('width').replace(/[^-\d\.]/g, ''),*/
-        onrendered: function (canvas) {
-            theCanvas = canvas;
-
-            var data = theCanvas.toDataURL('image/jpeg');
-            window.open(data);
-        }
-
-    });
-});
-//////////////////////////////////////////////////////////
+///////////////////////////////////////////////////
 var xpos;
 var ypos;
 //This method runs when your page is load.
@@ -117,11 +80,11 @@ $(document).ready(function () {
     $('#nameTextColor').change(function(){
 
         $(nameTextClass).css('color', $('#nameTextColor').val());
-    })
+    });
     $('#wishTextColor').change(function(){
 
         $(wishTextClass).css('color', $('#wishTextColor').val());
-    })
+    });
 
     $('#nameTextAlign').change(function(){
         $(nameTextClass).css('text-align', $('#nameTextAlign').find(":selected").val());
@@ -138,11 +101,34 @@ $(document).ready(function () {
 
 
 });
-particlesJS.load('particles-js', 'particlesjs-config.json', function() {
+particlesJS.load('particles-js', 'public/particlesjs-config.json', function() {
     console.log('callback - particles.js config loaded');
 });
 /////////////////////////////////////////////////////////
 var blowawish = angular.module("blowawish", []);
+
+/*blowawish.run(function($rootScope) {
+
+    $rootScope.cookieCheck = function() {
+        var cookiename = 'micPreset';
+        var getCookies = document.cookie.split(';');
+
+        getCookies.forEach(function (item, index, arr) {
+            if (item.indexOf(cookiename) !== -1) {
+                console.log('getCookies true');
+                return 'true';
+
+            }
+        });
+
+        return 'false'
+    };
+});*/
+function getCookie(name) {
+    var value = "; " + document.cookie;
+    var parts = value.split("; " + name + "=");
+    if (parts.length == 2) return parts.pop().split(";").shift();
+}
 
 blowawish.service('CanBlow', function () {
     var canBlow = {
@@ -159,8 +145,48 @@ blowawish.service('CanBlow', function () {
     };
 });
 
+blowawish.service('cookieCheck', function () {
 
-blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
+    return {
+        check: function () {
+            var cookiename = 'micPreset';
+
+                if (document.cookie.indexOf(cookiename + '=') >= 0) {
+                   return 'true';
+
+                }else{
+                   return 'false'
+                }
+        }
+    };
+});
+
+
+
+
+blowawish.controller("wishAngController",function ($scope, $http, CanBlow, cookieCheck) {
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    $scope.plusDivs = function(n) {
+        showDivs(slideIndex += n);
+    };
+
+    function showDivs(n) {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        if (n > x.length) {
+            slideIndex = 1
+        }
+        if (n < 1) {
+            slideIndex = x.length
+        }
+        ;
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        x[slideIndex - 1].style.display = "block";
+    }
     var wishConfirmClass = '.wish-confirm';
     $scope.dragWish = "voer je wens in";
     $scope.dragName = "voer je naam in";
@@ -173,7 +199,25 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
         } else {
             $(polaroidClass).addClass(animationClass);
         }
+    };
+
+
+    setTimeout(function(){
+        console.log('cookiecheck ' + cookieCheck.check());
+    }, 1000);
+
+    if (cookieCheck.check() == 'true') {
+        console.log('herpderp true');
+        $scope.cookieError = false;
+        $scope.previewConfirmationSection = false;
+        $scope.uploadImgSection = false;
+    }else if(cookieCheck.check() == 'false' ){
+        console.log('herpderp false');
+        $scope.cookieError = true;
+        $scope.previewConfirmationSection = false;
+        $scope.uploadImgSection = true;
     }
+
 
     $scope.projectInput = function (input) {
         var selectedInput = input;
@@ -262,7 +306,8 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
             // $_FILES['input_file_name']
             success: function (jsonData) {
                 console.log('testte');
-                $('.preview-img').attr('src', jsonData);
+                console.log(jsonData);
+                $('.preview-img').attr('src', "." + jsonData);
                 $('.preview-img').on('load', function () {
                     setTimeout(function () {
                         $scope.previewConfirmationSection = true;
@@ -270,7 +315,7 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
                         $scope.$apply();
                         triggerPolaroidAnimation();
                         $scope.loading = false;
-                    }, 200);
+                    }, 500);
 
                 });
 
@@ -290,7 +335,8 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
             },
             data: {
                 name: $scope.wishFormName,
-                wish: $scope.wishFormWish
+                wish: $scope.wishFormWish,
+
             }
         };
 
@@ -301,8 +347,8 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
                     $scope.closeWishEnter = true;
                     $scope.wishName = data.data[1];
                     $scope.wishText = data.data[2];
+                    $scope.wishID = data.data[3];
 
-                    CanBlow.setBool(true);
                     $scope.postToInsta();
                 } else if (data.data[0] == 'error') {
                     $scope.wishError = true;
@@ -313,7 +359,6 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
     };
     $scope.enableBlow = function () {
 
-
     };
 
     $scope.toggleWishWindow = function () {
@@ -322,11 +367,32 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
         $scope.showImageEditScreen = false;
         $scope.stepSection = true;
     };
-
+    $scope.updateImage= function(){
+        var req = {
+            method: 'POST',
+            url: './update_wish',
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                /* 'Content-Type': 'application/x-www-form-urlencoded'*/
+            },
+            data: {
+                id: $scope.wishID,
+                image: $scope.savedImage
+            }
+        };
+        $http(req).then(function (data) {
+                if (data.data == "1") {
+                    console.log('image saved');
+                } else if (data.data == "2") {
+                    console.log('image not saved');
+                }
+            }
+        );
+    };
     $scope.postToInsta = function () {
-
+        $scope.loadingToWish = true;
         $scope.toggleWishWindow();
-        particlesJS.load('particles-js', 'particlesjs-config-up.json', function() {
+        particlesJS.load('particles-js', 'public/particlesjs-config-up.json', function() {
             console.log('callback - particles.js config loaded');
         });
         pJSDom[0]["pJS"]['particles']['move']['speed'] = 40;
@@ -335,10 +401,12 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
         $('#main-text').css('border', 'none');
         $('#footer-text').css('border', 'none');
         $('.ui-icon').css('display', 'none');
-
+        $("#insta_image").addClass('fastCorrection');
         html2canvas($("#insta_image"), {
-            height: $('.polaroid-big').css('height').replace(/[^-\d\.]/g, ''),
+
+           /* height: $('.polaroid-big').css('height').replace(/[^-\d\.]/g, ''),*/
             onrendered: function (canvas) {
+                $("#insta_image").removeClass('fastCorrection');
                 theCanvas = canvas;
                 /* document.body.appendChild(canvas);*/
                 var data = theCanvas.toDataURL('image/jpeg');
@@ -349,6 +417,9 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
                 }).then(function (data) {
                    if(data.data != null){
                        $scope.savedImage = data.data;
+                       $scope.updateImage();
+                       $scope.loadingToWish = false;
+                       CanBlow.setBool(true);
                    }
                 });
                 // Convert and download as image
@@ -363,32 +434,28 @@ blowawish.controller("wishAngController", function ($scope, $http, CanBlow) {
     };
 });
 
-blowawish.controller("InstaAngController", function ($scope, $http, CanBlow) {
-
-
-});
-
-blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow) {
+blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow, cookieCheck) {
     var calibrating = false;
     var streamOpen = false;
     var takeAverage = false;
     var avgArray = [];
     var marginCounter = 0;
     var blowOverlayClass = '.blowdiv';
+    var blowImageClass = '.endImage';
     var wishEndClass = '.wish-end';
     var counterID = '#calCounter';
     var presetInpID = "#preset_number";
-    var cookiename = 'micPreset';
+
     var cookievalue = [];
     var maxMicPeak = 0;
-    var micPeakOffset = 20;
+    var micPeakOffset = 10;
     var globalAverage = 0;
     var cookieIsSet = false;
     var pushEnabled = false;
     var countTryStream = 0;
 
-    var blowSpeed = 10; //speed for counter blowing
-    var counterEnd = -200; // at this point pusher is fired
+    var blowSpeed = 1; //speed for counter blowing
+    var counterEnd = -100; // at this point pusher is fired
 
     var canBlow = false;
 
@@ -500,7 +567,8 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
         calibrate();
     };
-    $scope.initCookie = function () {
+/*    $scope.initCookie = function () {
+        var cookiename = 'micPreset';
         var getCookies = document.cookie.split(';');
         getCookies.forEach(function (item, index, arr) {
             if (item.indexOf(cookiename) !== -1) {
@@ -512,6 +580,18 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
                 console.log(cookievalue);
             }
         });
+    };*/
+
+    $scope.initCookie = function () {
+
+            if (cookieCheck.check() == 'true') {
+                cookievalue = decodeURIComponent(getCookie('micPreset')).split(/=|&/);
+                maxMicPeak = parseInt(cookievalue[1]);
+                cookieIsSet = true;
+                $scope.cookieError = false;
+                console.log(cookievalue);
+            }
+
     };
     $scope.redirectToEnd = function () {
         window.location = "./end/" + $scope.wishName + '/' + $scope.wishText;
@@ -567,7 +647,7 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
                     var array = new Uint8Array(analyser.frequencyBinCount);
                     analyser.getByteFrequencyData(array);
-                    console.log('audiostream open');
+           /*         console.log('audiostream open');*/
                     var values = 0;
 
                     var length = array.length;
@@ -577,24 +657,30 @@ blowawish.controller("micStreamAngController", function ($scope, $http, CanBlow)
 
                     var average = values / length;
                     globalAverage = average;
-                    console.log(globalAverage);
+                  /*  console.log(globalAverage);*/
+                    var partilesInst = pJSDom[1] || false;
                     if(Math.floor(globalAverage) > 20){
-                        pJSDom[1]["pJS"]['particles']['move']['speed'] = Math.floor(globalAverage) / 5;
+                        if(partilesInst != false ){
+                            pJSDom[1]["pJS"]['particles']['move']['speed'] = Math.floor(globalAverage) / 3;
+                        }
+
                     }
 
-                    $(blowOverlayClass).css('margin-top', marginCounter + "%");
+                   /* $(blowOverlayClass).css('margin-top', marginCounter + "%");*/
+
                     /*   console.log(globalAverage);
                      console.log((maxMicPeak - micPeakOffset));*/
 
                     if (cookieIsSet && globalAverage > (maxMicPeak - micPeakOffset) && !pushEnabled && !calibrating && canBlow) {
                         console.log('blow counter working');
                         marginCounter = marginCounter - blowSpeed;
+                        $(blowImageClass).css('margin-top', marginCounter + "%");
                         if (marginCounter < counterEnd) {
-                        /*    pushEnabled = true;
+                            pushEnabled = true;
                             console.log('pusher activated');
                             $scope.activatePusher();
                             $scope.wishSend = true;
-                            $scope.redirectToEnd();*/
+                            $scope.redirectToEnd();
 
                             // wel weer aanzetten!!!!!!
                         }
