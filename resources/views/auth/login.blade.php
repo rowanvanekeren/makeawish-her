@@ -1,3 +1,7 @@
+@extends('layouts.wish')
+
+@section('content')
+
 <style>
       .login-form{
           position: relative;
@@ -33,16 +37,18 @@
         font-size: 16px;
     }
 </style>
+
+
 <div class=" login-form">
     <div class="">
-        <h1>Login</h1>
+        <h1 style="color:white;">Login</h1>
         <form class="form-horizontal  " role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 {{--            <label for="name" class="col-md-4 control-label">Naam</label>--}}
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}"  required autofocus placeholder="Naam">
 
                     @if ($errors->has('name'))
@@ -56,7 +62,7 @@
             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
               {{--  <label for="password" class="col-md-4 control-label">Paswoord</label>--}}
 
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <input id="password" type="password" class="form-control" name="password" required placeholder="Paswoord">
 
                     @if ($errors->has('password'))
@@ -74,8 +80,8 @@
 
 
             <div class="form-group">
-                <div class="col-md-8 col-md-offset-4">
-                    <button type="submit" class="submit-login">
+                <div class="col-md-12 ">
+                    <button type="submit " class=" btn-theme-1" style="width: 100%;">
                         Login
                     </button>
                 </div>
@@ -84,3 +90,4 @@
     </div>  
 </div>
 
+@endsection

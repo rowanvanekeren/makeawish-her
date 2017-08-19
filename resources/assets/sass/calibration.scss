@@ -1,9 +1,11 @@
 .preset-title{
   text-align: center;
   color:white;
-  background-color: rgb(55, 62, 110);
+  background-color: #9c4778;
 }
-
+.preset-container{
+  margin-top:70px;
+}
 .preset-container-inner{
   padding: 15px;
   background-color: #7088cf;
@@ -26,13 +28,13 @@
 }
 .inputs-new-preset{
   margin-top: 15px;
-  background-color: rgb(55, 62, 110);
+
   padding: 15px;
   form{
     input[type=text],  input[type=number]{
 
       border: none;
-      border-bottom: 4px solid rgb(87, 100, 163);
+      border-bottom: 4px solid  #9c4778;
       padding: 15px;
       margin-top: 15px;
       background: none;
@@ -51,7 +53,7 @@
 }
 
 .preset-calibrate{
-  background-color: rgb(55, 62, 110);
+
   text-align: center;
   h1{
     color:white;

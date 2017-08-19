@@ -152,7 +152,7 @@
   h2 {
     width: 100%;
     text-align: center;
-    border-bottom: 5px solid rgb(87, 100, 163);
+    border-bottom: 5px solid $theme-color-1;
     line-height: 0em;
     font-size: 1.5em;
     font-weight: bold;
@@ -162,7 +162,7 @@
   }
   h2 span {
 
-    background: rgb(87, 100, 163);
+    background: $theme-color-1;
     padding: 15px;
     border-radius: 50%;
   }
@@ -302,7 +302,7 @@
     padding: 5px;
     margin-bottom: 0;
     color: white;
-    background-color: rgb(55, 62, 110);
+    background-color: $theme-color-1;
     width: 100%;
     span {
       float: right;
@@ -313,9 +313,9 @@
 .options-content-wish, .options-content-name{
   color:white;
 
-  border-left: 1px solid rgb(55, 62, 110);
-  border-right: 1px solid rgb(55, 62, 110);
-  border-bottom: 1px solid rgb(55, 62, 110);
+  border-left: 1px solid $theme-color-1;
+  border-right: 1px solid $theme-color-1;
+  border-bottom: 1px solid $theme-color-1;
   padding-bottom: 25px;
   padding-top: 15px;
 }
@@ -347,7 +347,7 @@
 .form-control {
   width: 100%;
   border: none;
-  border-bottom: 4px solid rgb(87, 100, 163);
+  border-bottom: 4px solid #562b42;
   padding: 15px;
   margin-top: 15px;
   background: none;
@@ -364,10 +364,14 @@
   width: 100%;
   padding: 25px;
   border: none;
-  background-color: rgb(87, 100, 163);
+  background-color: #6b2c5c;
   color: white;
   font-weight: bold;
   font-size: 35px;
+  transition: 0.5s;
+  &:hover{
+    background-color: #562b42;
+  }
 }
 
 //steps
@@ -391,7 +395,7 @@
     flex-direction: column;
   }
   .step-number{
-    background:  rgb(87, 100, 163);
+    background:  $theme-color-1;
     color:white;
     font-weight: bold;
     width: 50px;
@@ -408,9 +412,25 @@
   }
 
 }
-
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color:    #fff;
+  opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color:    #fff;
+  opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:    #fff;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color:    #fff;
+}
 .title-theme-1{
-  background-color: rgb(55, 62, 110);
+  background-color: $theme-color-1;
   margin-top: 25px;
   margin-bottom: 25px;
 }
@@ -420,13 +440,13 @@
 }
 
 .btn-theme-1{
-  background-color: rgb(87, 100, 163);
+  background-color: $theme-color-1;
   border:none;
   padding: 15px;
   color:white;
   font-weight: bold;
   min-width: 80px;
-  border: 4px solid  rgb(87, 100, 163);
+  border: 4px solid  $theme-color-1;
 
 }
 

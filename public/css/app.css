@@ -10,8 +10,8 @@
 
 #wish-body {
   /*background: none !important;*/
-  background: -webkit-linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
-  background: linear-gradient(rgba(196, 102, 0, 0.6), rgba(155, 89, 182, 0.6));
+  background: -webkit-linear-gradient(rgba(37, 37, 37, 0.78), #bdb4b4);
+  background: linear-gradient(rgba(37, 37, 37, 0.78), #bdb4b4);
   background-repeat: no-repeat;
   background-size: cover;
   min-height: 100vh;
@@ -216,7 +216,7 @@
 .seperation-line h2 {
   width: 100%;
   text-align: center;
-  border-bottom: 5px solid #5764a3;
+  border-bottom: 5px solid #9c4778;
   line-height: 0em;
   font-size: 1.5em;
   font-weight: bold;
@@ -225,7 +225,7 @@
 }
 
 .seperation-line h2 span {
-  background: #5764a3;
+  background: #9c4778;
   padding: 15px;
   border-radius: 50%;
 }
@@ -364,7 +364,7 @@
   padding: 5px;
   margin-bottom: 0;
   color: white;
-  background-color: #373e6e;
+  background-color: #9c4778;
   width: 100%;
 }
 
@@ -374,9 +374,9 @@
 
 .options-content-wish, .options-content-name {
   color: white;
-  border-left: 1px solid #373e6e;
-  border-right: 1px solid #373e6e;
-  border-bottom: 1px solid #373e6e;
+  border-left: 1px solid #9c4778;
+  border-right: 1px solid #9c4778;
+  border-bottom: 1px solid #9c4778;
   padding-bottom: 25px;
   padding-top: 15px;
 }
@@ -402,7 +402,7 @@
 .form-control {
   width: 100%;
   border: none;
-  border-bottom: 4px solid #5764a3;
+  border-bottom: 4px solid #562b42;
   padding: 15px;
   margin-top: 15px;
   background: none;
@@ -419,10 +419,16 @@
   width: 100%;
   padding: 25px;
   border: none;
-  background-color: #5764a3;
+  background-color: #6b2c5c;
   color: white;
   font-weight: bold;
   font-size: 35px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.submit-wish:hover {
+  background-color: #562b42;
 }
 
 .step-wrapper {
@@ -452,7 +458,7 @@
 }
 
 .step-wrapper .step-number {
-  background: #5764a3;
+  background: #9c4778;
   color: white;
   font-weight: bold;
   width: 50px;
@@ -472,8 +478,35 @@
   padding: 5px;
 }
 
+::-webkit-input-placeholder {
+  /* WebKit, Blink, Edge */
+  color: #fff;
+}
+
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #fff;
+  opacity: 1;
+}
+
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #fff;
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #fff;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: #fff;
+}
+
 .title-theme-1 {
-  background-color: #373e6e;
+  background-color: #9c4778;
   margin-top: 25px;
   margin-bottom: 25px;
 }
@@ -483,13 +516,13 @@
 }
 
 .btn-theme-1 {
-  background-color: #5764a3;
+  background-color: #9c4778;
   border: none;
   padding: 15px;
   color: white;
   font-weight: bold;
   min-width: 80px;
-  border: 4px solid #5764a3;
+  border: 4px solid #9c4778;
 }
 
 select {
@@ -534,10 +567,54 @@ select {
   transform: translate(-50%, -50%);
 }
 
+.text-blow-end {
+  padding: 0;
+  color: white;
+  position: relative;
+  text-align: center;
+  font-size: 4em;
+  font-weight: bold;
+  margin-top: 10%;
+  -webkit-animation-name: wiggle;
+  animation-name: wiggle;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes wiggle {
+  0% {
+    margin-top: 10%;
+  }
+  50% {
+    margin-top: 15%;
+  }
+  100% {
+    margin-top: 10%;
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    margin-top: 10%;
+  }
+  50% {
+    margin-top: 15%;
+  }
+  100% {
+    margin-top: 10%;
+  }
+}
+
 .preset-title {
   text-align: center;
   color: white;
-  background-color: #373e6e;
+  background-color: #9c4778;
+}
+
+.preset-container {
+  margin-top: 70px;
 }
 
 .preset-container-inner {
@@ -564,7 +641,6 @@ select {
 
 .inputs-new-preset {
   margin-top: 15px;
-  background-color: #373e6e;
   padding: 15px;
 }
 
@@ -575,7 +651,7 @@ select {
 
 .inputs-new-preset form input[type=text], .inputs-new-preset form input[type=number] {
   border: none;
-  border-bottom: 4px solid #5764a3;
+  border-bottom: 4px solid  #9c4778;
   padding: 15px;
   margin-top: 15px;
   background: none;
@@ -587,7 +663,6 @@ select {
 }
 
 .preset-calibrate {
-  background-color: #373e6e;
   text-align: center;
 }
 
@@ -629,7 +704,7 @@ select {
   font-weight: bold;
   min-width: 80px;
   font-size: 2em;
-  border: 4px solid  #9c4778;
+  border: 4px solid #9c4778;
   -webkit-transition: .5s;
   transition: .5s;
   cursor: pointer;
@@ -720,7 +795,32 @@ select {
   font-weight: bold;
 }
 
+.block {
+  float: left;
+  margin-bottom: 25px;
+  width: calc(33.33% - 17px);
+  opacity: 0;
+}
+
+.block .block img {
+  width: 100%;
+  height: auto;
+}
+
+.insta-logo {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  position: relative;
+  width: 300px;
+  -webkit-filter: invert(100%);
+  filter: invert(100%);
+}
+
 @media screen and (max-width: 500px) {
+  .block {
+    width: 100%;
+    opacity: 0;
+  }
   .home-steps {
     width: 100%;
     margin-top: -55px;
@@ -736,7 +836,7 @@ select {
   }
   .home-img-wrapper {
     text-align: center;
-    height: 425px;
+    height: 600px;
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -759,7 +859,7 @@ select {
     font-weight: bold;
     min-width: 80px;
     font-size: 2em;
-    border: 4px solid  #9c4778;
+    border: 4px solid #9c4778;
     -webkit-transition: .5s;
     transition: .5s;
   }
@@ -769,10 +869,14 @@ select {
   }
 }
 
-@media (min-width: 501px) and (max-width: 768px) {
+@media (min-width: 501px) and (max-width: 1300px) {
+  .block {
+    width: 100%;
+    opacity: 0;
+  }
   .home-img-wrapper {
     text-align: center;
-    height: 600px;
+    height: 700px;
     background-position: bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -796,7 +900,7 @@ select {
     font-weight: bold;
     min-width: 80px;
     font-size: 1.8em;
-    border: 4px solid  #9c4778;
+    border: 4px solid #9c4778;
     -webkit-transition: .5s;
     transition: .5s;
   }
@@ -806,15 +910,15 @@ select {
   }
   .home-steps {
     position: relative;
-    margin-top: -100px;
+    margin-top: -80px;
   }
   .home-steps .step-number {
-    width: 160px;
-    height: 160px;
+    width: 120px;
+    height: 120px;
     font-size: 2.8em;
   }
   .home-steps .step-title {
-    font-size: 2.5em;
+    font-size: 2em;
     color: #9c4778;
     letter-spacing: -1px;
   }

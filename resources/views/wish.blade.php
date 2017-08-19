@@ -268,7 +268,7 @@
                 </div>
             </div>--}}
 
-            <div class="text" ng-hide="wishSend">
+            <div class="text-blow-end" ng-hide="wishSend">
                 <p>Now blow it away!</p>
             </div>
 
